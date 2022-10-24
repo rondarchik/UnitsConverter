@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="weight_list">
+        <item>Kilograms (kg)</item>
+        <item>Tones (t)</item>
+        <item>Pounds (lb)</item>
+        <item>Ounces (oz)</item>
+    </string-array>
+</resources>

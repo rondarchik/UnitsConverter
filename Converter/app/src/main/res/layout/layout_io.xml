@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.weight.WeightFragment">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/input_layout"
@@ -20,9 +19,10 @@
             android:id="@+id/input_spinner"
             android:layout_width="340dp"
             android:layout_height="48dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:entries="@array/weight_list"
+            android:layout_marginEnd="10dp"
+            android:entries="@array/length_list"
             android:minHeight="48dp"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,9 +41,10 @@
 
             <EditText
                 android:id="@+id/input_edittext"
-                android:layout_width="330dp"
+                android:layout_width="340dp"
                 android:layout_height="62dp"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="15dp"
                 android:layout_weight="0"
                 android:cursorVisible="false"
                 android:ems="10"
@@ -57,8 +58,6 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
                 android:orientation="vertical" >
 
                 <ImageButton
@@ -117,8 +116,9 @@
             android:layout_width="340dp"
             android:layout_height="48dp"
             android:layout_marginTop="5dp"
-            android:layout_marginStart="15dp"
-            android:entries="@array/weight_list"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:entries="@array/length_list"
             android:minHeight="48dp"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -140,12 +140,13 @@
                 android:text="@string/_0"
                 android:focusable="false"
                 android:cursorVisible="false"
-                android:layout_width="330dp"
+                android:layout_width="340dp"
                 android:layout_height="62dp"
                 android:layout_weight="0"
                 android:inputType="numberDecimal"
                 android:ems="10"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="15dp"
                 app:layout_constraintHorizontal_bias="1.0"
                 tools:ignore="SpeakableTextPresentCheck"
                 android:importantForAutofill="no" />
@@ -153,8 +154,6 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
                 android:orientation="vertical" >
 
                 <ImageButton
@@ -182,5 +181,6 @@
         </LinearLayout>
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

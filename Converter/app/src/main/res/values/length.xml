@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="length_list">
+        <item>Meters (m)</item>
+        <item>Kilometers (km)</item>
+        <item>Feet (ft)</item>
+        <item>Miles (mi)</item>
+    </string-array>
+</resources>
