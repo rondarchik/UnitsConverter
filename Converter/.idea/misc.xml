@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable/bordered_circle_spinner.xml" value="0.1" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable/ic_arrow_back.xml" value="0.159" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable/ic_currency.xml" value="0.159" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.159" />
@@ -11,14 +12,18 @@
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable/ic_length.xml" value="0.159" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable/ic_time.xml" value="0.159" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable/ic_weight.xml" value="0.159" />
+        <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/font/lato.xml" value="0.1" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/fragment_dashboard.xml" value="0.22826086956521738" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/fragment_home.xml" value="0.22826086956521738" />
+        <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/fragment_keyboard.xml" value="0.24895833333333334" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/fragment_length.xml" value="0.25" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/fragment_notifications.xml" value="0.22826086956521738" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/fragment_time.xml" value="0.25" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/fragment_weight.xml" value="0.1" />
+        <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/widget_keyboard.xml" value="0.16" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/menu/bottom_nav_menu.xml" value="0.264" />
+        <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/xml/keyboard_widget_info.xml" value="0.1" />
       </map>
     </option>
   </component>
