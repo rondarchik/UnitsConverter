@@ -22,14 +22,14 @@ class WeightFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
+        val weightViewModel =
             ViewModelProvider(this)[WeightViewModel::class.java]
 
         _binding = FragmentWeightBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textWeight
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
+        weightViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root

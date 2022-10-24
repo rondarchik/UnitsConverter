@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Converter</string>
-    <string name="title_Length">Length Converter</string>
-    <string name="title_Weight">Weight Converter</string>
-    <string name="title_Time">Time Converter</string>
+    <string name="title_time">Time</string>
+    <string name="title_length">Length</string>
+    <string name="title_weight">Weight</string>
 
     <string name="input_copy_button">Copy</string>
     <string name="input_paste_button">Paste</string>
@@ -50,5 +50,4 @@
     <string name="to_much_edittext">(_!_)</string>
     <string name="to_mush_toast">Vadim, too much.. \n Max: 16 \n (_!_)</string>
     <string name="edittext">This field is for OUTPUT results, not INPUT!</string>
-
 </resources>
