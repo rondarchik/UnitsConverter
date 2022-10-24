@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_length">
+
+    <fragment
+        android:id="@+id/navigation_length"
+        android:name="rondarchik.calculator.converter.ui.length.LengthFragment"
+        android:label="@string/title_Length"
+        tools:layout="@layout/fragment_length" />
+
+    <fragment
+        android:id="@+id/navigation_weight"
+        android:name="rondarchik.calculator.converter.ui.weight.WeightFragment"
+        android:label="@string/title_Weight"
+        tools:layout="@layout/fragment_weight" />
+
+    <fragment
+        android:id="@+id/navigation_time"
+        android:name="rondarchik.calculator.converter.ui.time.TimeFragment"
+        android:label="@string/title_Time"
+        tools:layout="@layout/fragment_time" />
+</navigation>
