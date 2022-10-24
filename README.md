@@ -1,2 +1,1 @@
-# MobileApp_Android_Kotlin
-Repo for software design labs
+# Dovgun Victoriya | 053502
