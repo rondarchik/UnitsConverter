@@ -1,28 +1,30 @@
 package rondarchik.calculator.converter
 
+
+import android.content.ClipboardManager
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
-import android.widget.Spinner
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import rondarchik.calculator.converter.databinding.ActivityMainBinding
+import rondarchik.calculator.converter.services.IOService
 import rondarchik.calculator.converter.services.InputService
+import rondarchik.calculator.converter.ui.length.LengthViewModel
+import rondarchik.calculator.converter.ui.time.TimeViewModel
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var inputService: InputService
+    private lateinit var clipboardManager: ClipboardManager
 
-    private lateinit var inputEditText: EditText
-    private lateinit var  outputEditText: EditText
-    private lateinit var  inputSpinner: Spinner
-    private lateinit var  outputSpinner: Spinner
+    private lateinit var inputService: InputService
+    private lateinit var ioService: IOService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,20 +38,19 @@ class MainActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
 
-        inputEditText = findViewById(R.id.input_edittext)
-        outputEditText = findViewById(R.id.output_edittext)
-        inputSpinner = findViewById(R.id.input_spinner)
-        outputSpinner = findViewById(R.id.output_spinner)
+        clipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
     }
 
     override fun onStart() {
         super.onStart()
 
         this.inputService = InputService(this.applicationContext)
+        this.ioService = IOService(this.applicationContext, clipboardManager)
     }
 
     fun onNumsButtonClick (view: View) {
         var inputText = ""
+        val inputEditText: EditText = findViewById(R.id.input_edittext)
 
         when (view.id) {
             R.id.zero_button -> inputText = inputService.inputValidate("0", inputEditText.text.toString())
@@ -65,5 +66,59 @@ class MainActivity : AppCompatActivity() {
         }
 
         inputEditText.setText(inputText)
+    }
+
+    fun onIOButtonClick (view: View) {
+        val inputCopyButton: ImageButton = findViewById(R.id.input_copy_button)
+        val outputCopyButton: ImageButton = findViewById(R.id.output_copy_button)
+        val inputPasteButton: ImageButton = findViewById(R.id.input_paste_button)
+        val outputPasteButton: ImageButton = findViewById(R.id.output_paste_button)
+        val switchButton: ImageButton = findViewById(R.id.exchange_button)
+        val inputEditText: EditText = findViewById(R.id.input_edittext)
+        val outputEditText: EditText = findViewById(R.id.output_edittext)
+        val inputSpinner: Spinner = findViewById(R.id.input_spinner)
+        val outputSpinner: Spinner = findViewById(R.id.output_spinner)
+
+        when (view.id) {
+            R.id.input_copy_button ->
+                inputCopyButton.setOnClickListener {
+                    ioService.copyValue(inputEditText)
+                }
+            R.id.output_copy_button ->
+                outputCopyButton.setOnClickListener {
+                    ioService.copyValue(outputEditText)
+                }
+            R.id.input_paste_button ->
+                inputPasteButton.setOnClickListener {
+                    ioService.pasteValue(inputEditText)
+                }
+            R.id.output_paste_button ->
+                outputPasteButton.setOnClickListener {
+                    ioService.pasteValue(outputEditText)
+                }
+            R.id.exchange_button ->
+                switchButton.setOnClickListener {
+                    ioService.switchValues(inputEditText, outputEditText, inputSpinner, outputSpinner)
+                }
+        }
+    }
+
+    private fun changeSpinnerList(itemId: Int): Boolean {
+        val inputSpinner: Spinner = findViewById(R.id.input_spinner)
+        val outputSpinner: Spinner = findViewById(R.id.output_spinner)
+
+        val adapter = when (itemId) {
+            0 -> ArrayAdapter.createFromResource(this.applicationContext, R.array.length_list, R.layout.layout_spinner)
+            1 -> ArrayAdapter.createFromResource(this.applicationContext, R.array.weight_list, R.layout.layout_spinner)
+            2 -> ArrayAdapter.createFromResource(this.applicationContext, R.array.time_list, R.layout.layout_spinner)
+            else -> return false
+        }
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        inputSpinner.adapter = adapter
+        outputSpinner.adapter = adapter
+
+        return true
     }
 }

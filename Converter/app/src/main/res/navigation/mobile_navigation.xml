@@ -3,13 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_time">
-
-    <fragment
-        android:id="@+id/navigation_time"
-        android:name="rondarchik.calculator.converter.ui.time.TimeFragment"
-        android:label="@string/title_time"
-        tools:layout="@layout/fragment_time" />
+    app:startDestination="@+id/navigation_length">
 
     <fragment
         android:id="@+id/navigation_length"
@@ -22,4 +16,11 @@
         android:name="rondarchik.calculator.converter.ui.weight.WeightFragment"
         android:label="@string/title_weight"
         tools:layout="@layout/fragment_weight" />
+
+    <fragment
+        android:id="@+id/navigation_time"
+        android:name="rondarchik.calculator.converter.ui.time.TimeFragment"
+        android:label="@string/title_time"
+        tools:layout="@layout/fragment_time" />
+
 </navigation>

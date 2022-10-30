@@ -4,7 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.EditText
+import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import rondarchik.calculator.converter.databinding.FragmentTimeBinding
@@ -22,16 +23,22 @@ class TimeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val timeViewModel =
-            ViewModelProvider(this)[TimeViewModel::class.java]
 
         _binding = FragmentTimeBinding.inflate(inflater, container, false)
 
-//        val textView: TextView = binding.textTime
-//        timeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
+        val inputEditText: EditText = binding.ioField.inputEdittext
+        inputEditText.setText("0")
+
+        val outputEditText: EditText = binding.ioField.outputEdittext
+        outputEditText.setText("0")
+
         return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        val timeViewModel = ViewModelProvider(this)[TimeViewModel::class.java]
     }
 
     override fun onDestroyView() {

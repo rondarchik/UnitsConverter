@@ -19,9 +19,8 @@
             android:id="@+id/input_spinner"
             android:layout_width="340dp"
             android:layout_height="48dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
             android:entries="@array/length_list"
             android:minHeight="48dp"
             android:textSize="16sp"
@@ -41,10 +40,9 @@
 
             <EditText
                 android:id="@+id/input_edittext"
-                android:layout_width="340dp"
+                android:layout_width="330dp"
                 android:layout_height="62dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
                 android:layout_weight="0"
                 android:cursorVisible="false"
                 android:ems="10"
@@ -64,8 +62,10 @@
                     android:id="@+id/input_copy_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
                     android:background="@drawable/button_circle_shape"
                     android:contentDescription="@string/input_copy_button"
+                    android:onClick="onIOButtonClick"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:srcCompat="@drawable/ic_copy_button"
                     tools:ignore="ImageContrastCheck,TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
@@ -74,13 +74,14 @@
                     android:id="@+id/input_paste_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
                     android:background="@drawable/button_circle_shape"
                     android:contentDescription="@string/input_paste_button"
+                    android:onClick="onIOButtonClick"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:srcCompat="@drawable/ic_paste_button"
                     tools:ignore="ImageContrastCheck,TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
             </LinearLayout>
-
 
         </LinearLayout>
 
@@ -92,14 +93,15 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:contentDescription="@string/exchange_button"
+        android:onClick="onIOButtonClick"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         app:layout_constraintBottom_toTopOf="@id/output_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/input_layout"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
         app:srcCompat="@drawable/ic_exchange_button"
-        tools:ignore="ImageContrastCheck" />
+        tools:ignore="ImageContrastCheck,TouchTargetSizeCheck" />
 
     <LinearLayout
         android:id="@+id/output_layout"
@@ -116,8 +118,7 @@
             android:layout_width="340dp"
             android:layout_height="48dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="15dp"
             android:entries="@array/length_list"
             android:minHeight="48dp"
             android:textSize="16sp"
@@ -140,13 +141,12 @@
                 android:text="@string/_0"
                 android:focusable="false"
                 android:cursorVisible="false"
-                android:layout_width="340dp"
+                android:layout_width="330dp"
                 android:layout_height="62dp"
                 android:layout_weight="0"
                 android:inputType="numberDecimal"
                 android:ems="10"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
                 app:layout_constraintHorizontal_bias="1.0"
                 tools:ignore="SpeakableTextPresentCheck"
                 android:importantForAutofill="no" />
@@ -160,8 +160,10 @@
                     android:id="@+id/output_copy_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
                     android:background="@drawable/button_circle_shape"
                     android:contentDescription="@string/input_copy_button"
+                    android:onClick="onIOButtonClick"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:srcCompat="@drawable/ic_copy_button"
                     tools:ignore="ImageContrastCheck,TouchTargetSizeCheck" />
@@ -170,8 +172,10 @@
                     android:id="@+id/output_paste_button"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
                     android:background="@drawable/button_circle_shape"
                     android:contentDescription="@string/input_paste_button"
+                    android:onClick="onIOButtonClick"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:srcCompat="@drawable/ic_paste_button"
                     tools:ignore="ImageContrastCheck,TouchTargetSizeCheck" />
