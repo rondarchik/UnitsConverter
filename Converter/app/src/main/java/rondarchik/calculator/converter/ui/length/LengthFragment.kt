@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.EditText
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import rondarchik.calculator.converter.converters.Converter
 import rondarchik.calculator.converter.databinding.FragmentLengthBinding
+import rondarchik.calculator.converter.services.SpinnerOnItemSelectedListener
 
 
 class LengthFragment : Fragment() {
@@ -31,6 +34,13 @@ class LengthFragment : Fragment() {
         val outputEditText: EditText = binding.ioField.outputEdittext
         outputEditText.setText("0")
 
+        val inputSpinner: Spinner = binding.ioField.inputSpinner
+        val outputSpinner: Spinner = binding.ioField.outputSpinner
+
+        val spinnerListener = SpinnerOnItemSelectedListener(inputEditText, outputEditText, inputSpinner, outputSpinner)
+        inputSpinner.onItemSelectedListener = spinnerListener
+        outputSpinner.onItemSelectedListener = spinnerListener
+
         return binding.root
     }
 
@@ -45,4 +55,5 @@ class LengthFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

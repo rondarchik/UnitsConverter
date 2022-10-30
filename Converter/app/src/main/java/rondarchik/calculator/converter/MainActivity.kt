@@ -13,6 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import rondarchik.calculator.converter.databinding.ActivityMainBinding
 import rondarchik.calculator.converter.services.IOService
 import rondarchik.calculator.converter.services.InputService
+import rondarchik.calculator.converter.services.SpinnerOnItemSelectedListener
 import rondarchik.calculator.converter.ui.length.LengthViewModel
 import rondarchik.calculator.converter.ui.time.TimeViewModel
 
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var inputService: InputService
     private lateinit var ioService: IOService
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +48,8 @@ class MainActivity : AppCompatActivity() {
 
         this.inputService = InputService(this.applicationContext)
         this.ioService = IOService(this.applicationContext, clipboardManager)
+
+        //val spinnerListener = SpinnerOnItemSelectedListener()
     }
 
     fun onNumsButtonClick (view: View) {
