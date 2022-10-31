@@ -9,9 +9,8 @@ import android.widget.EditText
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import rondarchik.calculator.converter.converters.Converter
+import rondarchik.calculator.converter.converters.LengthConverter
 import rondarchik.calculator.converter.databinding.FragmentLengthBinding
-import rondarchik.calculator.converter.services.SpinnerOnItemSelectedListener
 
 
 class LengthFragment : Fragment() {
@@ -37,7 +36,7 @@ class LengthFragment : Fragment() {
         val inputSpinner: Spinner = binding.ioField.inputSpinner
         val outputSpinner: Spinner = binding.ioField.outputSpinner
 
-        val spinnerListener = SpinnerOnItemSelectedListener(inputEditText, outputEditText, inputSpinner, outputSpinner)
+        val spinnerListener = LengthSpinnerListener(inputEditText, outputEditText, inputSpinner, outputSpinner)
         inputSpinner.onItemSelectedListener = spinnerListener
         outputSpinner.onItemSelectedListener = spinnerListener
 
@@ -54,6 +53,22 @@ class LengthFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+}
+
+
+class LengthSpinnerListener(private val inputValue: EditText, private val outputValue: EditText,
+                            private val inputSpinner: Spinner, private val outputSpinner: Spinner):
+                                    AdapterView.OnItemSelectedListener {
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        val converter = LengthConverter()
+        converter.convert(inputValue, outputValue, inputSpinner, outputSpinner)
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        TODO("Not yet implemented")
     }
 
 }

@@ -200,7 +200,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1" >
 
             <Button
                 android:id="@+id/empty"
@@ -212,11 +212,10 @@
                 android:layout_weight="1"
                 android:background="@drawable/button_circle_shape"
                 android:fontFamily="@font/lato"
-                android:onClick="onClickKeyboardButton"
+                android:onClick="onKeyboardOtherButtonClick"
                 android:text=""
                 android:textColor="@color/black"
                 android:textSize="40sp"
-                android:visibility="invisible"
                 app:backgroundTint="@color/white" />
 
             <Button
@@ -283,7 +282,7 @@
             android:contentDescription="@string/erase_button"
             android:fontFamily="@font/lato_bold"
             android:gravity="center|center_horizontal"
-            android:onClick="onNumsButtonClick"
+            android:onClick="onKeyboardOtherButtonClick"
             android:text="@string/erase"
             android:textColor="@color/orange"
             android:textSize="34sp"
@@ -305,7 +304,7 @@
             android:contentDescription="@string/delete_button"
             android:gravity="center|center_horizontal"
             android:insetTop="0dp"
-            android:onClick="onNumsButtonClick"
+            android:onClick="onKeyboardOtherButtonClick"
             android:textSize="40sp"
             app:backgroundTint="@color/gray_button"
             app:icon="@drawable/ic_delete_button"

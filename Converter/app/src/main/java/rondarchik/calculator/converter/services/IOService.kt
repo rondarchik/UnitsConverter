@@ -39,6 +39,20 @@ class IOService(private var context: Context, var clipboardManager: ClipboardMan
         val item: ClipData.Item = data.getItemAt(0)
 
         val strToPaste = item.text.toString()
+        val correctCharacters = "0123456789."
+
+        if (strToPaste.length >= 25) {
+            Toast.makeText(context, R.string.to_much_to_paste, Toast.LENGTH_LONG).show()
+            return
+        }
+
+        for (i in strToPaste) {
+            if (i !in correctCharacters) {
+                Toast.makeText(context, R.string.no_digits_to_paste, Toast.LENGTH_LONG).show()
+                return
+            }
+        }
+
         fieldToPaste.text = strToPaste
         Toast.makeText(context, R.string.paste_message, Toast.LENGTH_SHORT).show()
     }

@@ -13,7 +13,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import rondarchik.calculator.converter.databinding.ActivityMainBinding
 import rondarchik.calculator.converter.services.IOService
 import rondarchik.calculator.converter.services.InputService
-import rondarchik.calculator.converter.services.SpinnerOnItemSelectedListener
 import rondarchik.calculator.converter.ui.length.LengthViewModel
 import rondarchik.calculator.converter.ui.time.TimeViewModel
 
@@ -49,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         this.inputService = InputService(this.applicationContext)
         this.ioService = IOService(this.applicationContext, clipboardManager)
 
-        //val spinnerListener = SpinnerOnItemSelectedListener()
     }
 
     fun onNumsButtonClick (view: View) {
@@ -67,9 +65,26 @@ class MainActivity : AppCompatActivity() {
             R.id.seven_button -> inputText = inputService.inputValidate("7", inputEditText.text.toString())
             R.id.eight_button -> inputText = inputService.inputValidate("8", inputEditText.text.toString())
             R.id.nine_button -> inputText = inputService.inputValidate("9", inputEditText.text.toString())
+            R.id.point_button -> inputText = inputService.inputValidate(".", inputEditText.text.toString())
+            else -> inputEditText.text = inputEditText.text
         }
 
         inputEditText.setText(inputText)
+        //convert
+    }
+
+    fun onKeyboardOtherButtonClick(view: View) {
+        val inputEditText: EditText = findViewById(R.id.input_edittext)
+        val outputEditText: EditText = findViewById(R.id. output_edittext)
+
+        when (view.id) {
+            R.id.empty -> Toast.makeText(applicationContext, R.string.empty, Toast.LENGTH_SHORT).show()
+            R.id.clear_button -> inputService.clearAll(inputEditText, outputEditText)
+            R.id.delete_button -> {
+                inputService.deleteSymbol(inputEditText)
+                //convert
+            }
+        }
     }
 
     fun onIOButtonClick (view: View) {
