@@ -4,17 +4,17 @@ package rondarchik.calculator.converter
 import android.content.ClipboardManager
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import rondarchik.calculator.converter.databinding.ActivityMainBinding
 import rondarchik.calculator.converter.services.IOService
 import rondarchik.calculator.converter.services.InputService
-import rondarchik.calculator.converter.ui.length.LengthViewModel
-import rondarchik.calculator.converter.ui.time.TimeViewModel
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var inputService: InputService
     private lateinit var ioService: IOService
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         clipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+
     }
 
     override fun onStart() {
@@ -120,24 +120,5 @@ class MainActivity : AppCompatActivity() {
                     ioService.switchValues(inputEditText, outputEditText, inputSpinner, outputSpinner)
                 }
         }
-    }
-
-    private fun changeSpinnerList(itemId: Int): Boolean {
-        val inputSpinner: Spinner = findViewById(R.id.input_spinner)
-        val outputSpinner: Spinner = findViewById(R.id.output_spinner)
-
-        val adapter = when (itemId) {
-            0 -> ArrayAdapter.createFromResource(this.applicationContext, R.array.length_list, R.layout.layout_spinner)
-            1 -> ArrayAdapter.createFromResource(this.applicationContext, R.array.weight_list, R.layout.layout_spinner)
-            2 -> ArrayAdapter.createFromResource(this.applicationContext, R.array.time_list, R.layout.layout_spinner)
-            else -> return false
-        }
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-
-        inputSpinner.adapter = adapter
-        outputSpinner.adapter = adapter
-
-        return true
     }
 }

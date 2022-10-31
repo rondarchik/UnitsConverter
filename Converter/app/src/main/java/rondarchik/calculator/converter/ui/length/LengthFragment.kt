@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import rondarchik.calculator.converter.converters.LengthConverter
+import rondarchik.calculator.converter.R
 import rondarchik.calculator.converter.databinding.FragmentLengthBinding
+import rondarchik.calculator.converter.services.SpinnerListener
 
 
 class LengthFragment : Fragment() {
@@ -36,7 +37,7 @@ class LengthFragment : Fragment() {
         val inputSpinner: Spinner = binding.ioField.inputSpinner
         val outputSpinner: Spinner = binding.ioField.outputSpinner
 
-        val spinnerListener = LengthSpinnerListener(inputEditText, outputEditText, inputSpinner, outputSpinner)
+        val spinnerListener = SpinnerListener(inputEditText, outputEditText, inputSpinner, outputSpinner)
         inputSpinner.onItemSelectedListener = spinnerListener
         outputSpinner.onItemSelectedListener = spinnerListener
 
@@ -55,20 +56,19 @@ class LengthFragment : Fragment() {
         _binding = null
     }
 
-}
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        val inputSpinner: Spinner = binding.ioField.inputSpinner
+        val outputSpinner: Spinner = binding.ioField.outputSpinner
 
-class LengthSpinnerListener(private val inputValue: EditText, private val outputValue: EditText,
-                            private val inputSpinner: Spinner, private val outputSpinner: Spinner):
-                                    AdapterView.OnItemSelectedListener {
+        val adapter = ArrayAdapter.createFromResource(view.context, R.array.length_list, R.layout.layout_spinner)
 
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        val converter = LengthConverter()
-        converter.convert(inputValue, outputValue, inputSpinner, outputSpinner)
-    }
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-    override fun onNothingSelected(parent: AdapterView<*>?) {
-        TODO("Not yet implemented")
+        inputSpinner.adapter = adapter
+        outputSpinner.adapter = adapter
+
     }
 
 }
