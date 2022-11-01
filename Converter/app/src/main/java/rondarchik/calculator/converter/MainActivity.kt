@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import rondarchik.calculator.converter.converters.Converter
 import rondarchik.calculator.converter.databinding.ActivityMainBinding
 import rondarchik.calculator.converter.services.IOService
 import rondarchik.calculator.converter.services.InputService
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var inputService: InputService
     private lateinit var ioService: IOService
+    private val converter = Converter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +55,9 @@ class MainActivity : AppCompatActivity() {
     fun onNumsButtonClick (view: View) {
         var inputText = ""
         val inputEditText: EditText = findViewById(R.id.input_edittext)
+        val outputEditText: EditText = findViewById(R.id. output_edittext)
+        val inputSpinner: Spinner = findViewById(R.id.input_spinner)
+        val outputSpinner: Spinner = findViewById(R.id.output_spinner)
 
         when (view.id) {
             R.id.zero_button -> inputText = inputService.inputValidate("0", inputEditText.text.toString())
@@ -70,19 +75,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         inputEditText.setText(inputText)
-        //convert
+        converter.convert(inputEditText, outputEditText, inputSpinner, outputSpinner)
     }
 
     fun onKeyboardOtherButtonClick(view: View) {
         val inputEditText: EditText = findViewById(R.id.input_edittext)
         val outputEditText: EditText = findViewById(R.id. output_edittext)
+        val inputSpinner: Spinner = findViewById(R.id.input_spinner)
+        val outputSpinner: Spinner = findViewById(R.id.output_spinner)
 
         when (view.id) {
             R.id.empty -> Toast.makeText(applicationContext, R.string.empty, Toast.LENGTH_SHORT).show()
             R.id.clear_button -> inputService.clearAll(inputEditText, outputEditText)
             R.id.delete_button -> {
                 inputService.deleteSymbol(inputEditText)
-                //convert
+                converter.convert(inputEditText, outputEditText, inputSpinner, outputSpinner)
             }
         }
     }
@@ -91,7 +98,6 @@ class MainActivity : AppCompatActivity() {
         val inputCopyButton: ImageButton = findViewById(R.id.input_copy_button)
         val outputCopyButton: ImageButton = findViewById(R.id.output_copy_button)
         val inputPasteButton: ImageButton = findViewById(R.id.input_paste_button)
-        val outputPasteButton: ImageButton = findViewById(R.id.output_paste_button)
         val switchButton: ImageButton = findViewById(R.id.exchange_button)
         val inputEditText: EditText = findViewById(R.id.input_edittext)
         val outputEditText: EditText = findViewById(R.id.output_edittext)
@@ -110,10 +116,7 @@ class MainActivity : AppCompatActivity() {
             R.id.input_paste_button ->
                 inputPasteButton.setOnClickListener {
                     ioService.pasteValue(inputEditText)
-                }
-            R.id.output_paste_button ->
-                outputPasteButton.setOnClickListener {
-                    ioService.pasteValue(outputEditText)
+                    converter.convert(inputEditText, outputEditText, inputSpinner, outputSpinner)
                 }
             R.id.exchange_button ->
                 switchButton.setOnClickListener {

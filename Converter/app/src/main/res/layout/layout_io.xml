@@ -60,9 +60,9 @@
 
                 <ImageButton
                     android:id="@+id/input_copy_button"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="5dp"
                     android:background="@drawable/button_circle_shape"
                     android:contentDescription="@string/input_copy_button"
                     android:onClick="onIOButtonClick"
@@ -74,7 +74,7 @@
                     android:id="@+id/input_paste_button"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="5dp"
                     android:background="@drawable/button_circle_shape"
                     android:contentDescription="@string/input_paste_button"
                     android:onClick="onIOButtonClick"
@@ -153,14 +153,15 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical" >
 
                 <ImageButton
                     android:id="@+id/output_copy_button"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="12dp"
                     android:background="@drawable/button_circle_shape"
                     android:contentDescription="@string/input_copy_button"
                     android:onClick="onIOButtonClick"
@@ -168,17 +169,6 @@
                     app:srcCompat="@drawable/ic_copy_button"
                     tools:ignore="ImageContrastCheck,TouchTargetSizeCheck" />
 
-                <ImageButton
-                    android:id="@+id/output_paste_button"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/button_circle_shape"
-                    android:contentDescription="@string/input_paste_button"
-                    android:onClick="onIOButtonClick"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:srcCompat="@drawable/ic_paste_button"
-                    tools:ignore="ImageContrastCheck,TouchTargetSizeCheck" />
             </LinearLayout>
 
 
