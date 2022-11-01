@@ -46,9 +46,12 @@
     <string name="zero2">Vadim, why do you need the second zero in start?!\nНЕ НАДА ТАК!!! ٩(ఠ益ఠ)۶</string>
     <string name="long_click_edittext">Vadim.. If you want to paste a text..\nClick on the button to the right!!!\n ٩(ఠ益ఠ)۶</string>
     <string name="to_much_toast">Vadim, too much..\nMax: 20\n(_!_)</string>
-    <string name="to_much_frac_toast">Vadim, too much..\nMax fractional: 10\n(_!_)</string>
-    <string name="to_much_to_paste">Too much symbols to paste..\nChange the value and try again!</string>
+    <string name="to_much_frac_toast">Vadim, too much..\nMax fractional part: 10\n(_!_)</string>
+    <string name="to_much_to_paste">Too much symbols..\nChange the value and try again!</string>
+    <string name="to_much_points_to_paste">Too much \'.\' symbols..\nChange the value and try again!</string>
+    <string name="to_much_zeros_to_paste">Too much zeros symbols in integer part of value..\nChange the value and try again!</string>
+    <string name="to_much_frac_to_paste">Too much fractional part..\nChange the value and try again!</string>
     <string name="no_digits_to_paste">Your value has invalid characters..\nChange the value and try again!</string>
     <string name="edittext">Vadim, this field is for OUTPUT results and it is NOT Editable!</string>
-    <string name="paste_edittext">Vadim, this field is for OUTPUT results and it is NOT Editable!\nSo you cant paste a value here..</string>
+    <string name="paste_edittext">Vadim, this field is for OUTPUT results and it is NOT Editable!\nSo you can not paste a value here..</string>
 </resources>

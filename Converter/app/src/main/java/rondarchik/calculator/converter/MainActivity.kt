@@ -75,17 +75,6 @@ class MainActivity : AppCompatActivity() {
             R.id.eight_button -> inputService.updateInputText("8", inputEditText)
             R.id.nine_button -> inputService.updateInputText("9", inputEditText)
             R.id.point_button -> inputService.updateInputText(".", inputEditText)
-//            R.id.zero_button -> inputText = inputService.inputValidate("0", inputEditText.text.toString())
-//            R.id.one_button -> inputText = inputService.inputValidate("1", inputEditText.text.toString())
-//            R.id.two_button -> inputText = inputService.inputValidate("2", inputEditText.text.toString())
-//            R.id.three_button -> inputText = inputService.inputValidate("3", inputEditText.text.toString())
-//            R.id.four_button -> inputText = inputService.inputValidate("4", inputEditText.text.toString())
-//            R.id.five_button -> inputText = inputService.inputValidate("5", inputEditText.text.toString())
-//            R.id.six_button -> inputText = inputService.inputValidate("6", inputEditText.text.toString())
-//            R.id.seven_button -> inputText = inputService.inputValidate("7", inputEditText.text.toString())
-//            R.id.eight_button -> inputText = inputService.inputValidate("8", inputEditText.text.toString())
-//            R.id.nine_button -> inputText = inputService.inputValidate("9", inputEditText.text.toString())
-//            R.id.point_button -> inputText = inputService.inputValidate(".", inputEditText.text.toString())
             else -> inputEditText.text = inputEditText.text
         }
 
@@ -130,6 +119,7 @@ class MainActivity : AppCompatActivity() {
             R.id.input_paste_button ->
                 inputPasteButton.setOnClickListener {
                     ioService.pasteValue(inputEditText)
+                    inputEditText.setSelection(inputEditText.text.toString().length)
                     converter.convert(inputEditText, outputEditText, inputSpinner, outputSpinner)
                 }
             R.id.exchange_button ->
@@ -148,6 +138,7 @@ class MainActivity : AppCompatActivity() {
         }
         input.setOnLongClickListener {
             ioService.pasteValue(input)
+            input.setSelection(input.text.toString().length)
             converter.convert(input, findViewById(R.id.output_edittext),
                 findViewById(R.id.input_spinner), findViewById(R.id.output_spinner))
             true
