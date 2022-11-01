@@ -2,7 +2,6 @@ package rondarchik.calculator.converter
 
 
 import android.content.ClipboardManager
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -59,28 +58,37 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onNumsButtonClick (view: View) {
-        var inputText = ""
         val inputEditText: EditText = findViewById(R.id.input_edittext)
         val outputEditText: EditText = findViewById(R.id. output_edittext)
         val inputSpinner: Spinner = findViewById(R.id.input_spinner)
         val outputSpinner: Spinner = findViewById(R.id.output_spinner)
 
         when (view.id) {
-            R.id.zero_button -> inputText = inputService.inputValidate("0", inputEditText.text.toString())
-            R.id.one_button -> inputText = inputService.inputValidate("1", inputEditText.text.toString())
-            R.id.two_button -> inputText = inputService.inputValidate("2", inputEditText.text.toString())
-            R.id.three_button -> inputText = inputService.inputValidate("3", inputEditText.text.toString())
-            R.id.four_button -> inputText = inputService.inputValidate("4", inputEditText.text.toString())
-            R.id.five_button -> inputText = inputService.inputValidate("5", inputEditText.text.toString())
-            R.id.six_button -> inputText = inputService.inputValidate("6", inputEditText.text.toString())
-            R.id.seven_button -> inputText = inputService.inputValidate("7", inputEditText.text.toString())
-            R.id.eight_button -> inputText = inputService.inputValidate("8", inputEditText.text.toString())
-            R.id.nine_button -> inputText = inputService.inputValidate("9", inputEditText.text.toString())
-            R.id.point_button -> inputText = inputService.inputValidate(".", inputEditText.text.toString())
+            R.id.zero_button -> inputService.updateInputText("0", inputEditText)
+            R.id.one_button -> inputService.updateInputText("1", inputEditText)
+            R.id.two_button -> inputService.updateInputText("2", inputEditText)
+            R.id.three_button -> inputService.updateInputText("3", inputEditText)
+            R.id.four_button -> inputService.updateInputText("4", inputEditText)
+            R.id.five_button -> inputService.updateInputText("5", inputEditText)
+            R.id.six_button -> inputService.updateInputText("6", inputEditText)
+            R.id.seven_button -> inputService.updateInputText("7", inputEditText)
+            R.id.eight_button -> inputService.updateInputText("8", inputEditText)
+            R.id.nine_button -> inputService.updateInputText("9", inputEditText)
+            R.id.point_button -> inputService.updateInputText(".", inputEditText)
+//            R.id.zero_button -> inputText = inputService.inputValidate("0", inputEditText.text.toString())
+//            R.id.one_button -> inputText = inputService.inputValidate("1", inputEditText.text.toString())
+//            R.id.two_button -> inputText = inputService.inputValidate("2", inputEditText.text.toString())
+//            R.id.three_button -> inputText = inputService.inputValidate("3", inputEditText.text.toString())
+//            R.id.four_button -> inputText = inputService.inputValidate("4", inputEditText.text.toString())
+//            R.id.five_button -> inputText = inputService.inputValidate("5", inputEditText.text.toString())
+//            R.id.six_button -> inputText = inputService.inputValidate("6", inputEditText.text.toString())
+//            R.id.seven_button -> inputText = inputService.inputValidate("7", inputEditText.text.toString())
+//            R.id.eight_button -> inputText = inputService.inputValidate("8", inputEditText.text.toString())
+//            R.id.nine_button -> inputText = inputService.inputValidate("9", inputEditText.text.toString())
+//            R.id.point_button -> inputText = inputService.inputValidate(".", inputEditText.text.toString())
             else -> inputEditText.text = inputEditText.text
         }
 
-        inputEditText.setText(inputText)
         converter.convert(inputEditText, outputEditText, inputSpinner, outputSpinner)
     }
 
@@ -155,33 +163,6 @@ class MainActivity : AppCompatActivity() {
         output.setOnLongClickListener {
             Toast.makeText(this.applicationContext, R.string.paste_edittext, Toast.LENGTH_LONG).show()
             true
-        }
-    }
-
-
-    private fun updateText(strToAdd: String) {
-        //????
-        val inputEditText: EditText = findViewById(R.id.input_edittext)
-        val oldStr = inputEditText.text.toString()
-        val cursorPos = inputEditText.selectionStart
-        val leftStr = oldStr.substring(0, cursorPos)
-        val rightStr = oldStr.substring(cursorPos)
-
-        if (inputEditText.text?.length!! <= 25)
-        {
-            if ("" == inputEditText.text.toString()) {
-                val str = inputService.inputValidate(strToAdd, inputEditText.text.toString())
-                inputEditText.setText(str)
-                inputEditText.setSelection(cursorPos + 1)
-            }
-            else {
-                val str = inputService.inputValidate(strToAdd, inputEditText.text.toString())
-                inputEditText.setText(String.format("%s%s%s", leftStr, str, rightStr))
-                inputEditText.setSelection(cursorPos + 1)
-            }
-        }
-        else {
-            Toast.makeText(applicationContext, R.string.to_much_toast, Toast.LENGTH_SHORT).show()
         }
     }
 }

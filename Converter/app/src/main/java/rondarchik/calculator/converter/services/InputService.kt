@@ -8,60 +8,101 @@ import rondarchik.calculator.converter.R
 
 class InputService(private var context: Context) : AppCompatActivity() {
 
-    fun inputValidate(inputText: String, currentText: String): String {
-        if (currentText.length >= 25) {
-            Toast.makeText(context, R.string.to_much_toast, Toast.LENGTH_SHORT).show()
-            return currentText
-        }
-
-        var fractionalPart = 0
+    fun updateInputText(strToAdd: String, inputEditText: EditText) {
+        // cursor
+        val oldStr = inputEditText.text.toString()
+        val cursorPosition = inputEditText.selectionStart
+        val leftStrPart = oldStr.substring(0, cursorPosition)
+        val rightStrPart = oldStr.substring(cursorPosition)
+        val newString: String
+        // point validate
+        var fractionalPartCounter = 0
         var fractionalFlag = false
+        var pointFlag = false
+        // zero validate
+        var zeroFlag = true
 
-        currentText.forEach {
-            if (it == '.')
+        if (oldStr.length > 20) {
+            Toast.makeText(context, R.string.to_much_toast, Toast.LENGTH_SHORT).show()
+            inputEditText.setText(oldStr)
+            inputEditText.setSelection(cursorPosition)
+            return
+        }
+
+        oldStr.forEach {
+            if (it == '.') {
                 fractionalFlag = true
+            }
             if (fractionalFlag)
-                fractionalPart++
+                fractionalPartCounter++
         }
 
-        if (fractionalPart >= 10) {
+        if (fractionalPartCounter > 10) {
             Toast.makeText(context, R.string.to_much_frac_toast, Toast.LENGTH_SHORT).show()
-            return currentText
+            inputEditText.setText(oldStr)
+            inputEditText.setSelection(cursorPosition)
+            return
         }
 
-        if (inputText[0] == '0') {
-            var zeroFlag = true
-            currentText.forEach {
+        if (strToAdd == "0") {
+            oldStr.forEach {
                 if (it != '0') {
                     zeroFlag = false
                     return@forEach
                 }
             }
-            if(zeroFlag)
-                return "0"
 
-            return currentText + inputText
+            if (zeroFlag) {
+                inputEditText.setText("0")
+                inputEditText.setSelection(cursorPosition + 1)
+                Toast.makeText(context, R.string.zero2, Toast.LENGTH_SHORT).show()
+                return
+            }
+            else {
+                newString = leftStrPart + strToAdd + rightStrPart
+                inputEditText.setText(newString)
+                inputEditText.setSelection(cursorPosition + 1)
+                return
+            }
         }
-        else if (inputText == "." && currentText.length < 24) {
-            var pointFlag = false
-            currentText.forEach {
+        else if (strToAdd == "." && oldStr.length < 20) {
+            oldStr.forEach {
                 if (it == '.') {
                     pointFlag = true
                     return@forEach
                 }
             }
-            if (pointFlag)
-                return currentText
-
-            return currentText + inputText
+            if (pointFlag) {
+                Toast.makeText(context, R.string.point2, Toast.LENGTH_SHORT).show()
+                inputEditText.setText(oldStr)
+                inputEditText.setSelection(cursorPosition)
+                return
+            }
+            else {
+                newString = leftStrPart + strToAdd + rightStrPart
+                inputEditText.setText(newString)
+                inputEditText.setSelection(cursorPosition + 1)
+                return
+            }
         }
-        else if (inputText == ".") {
+        else if (strToAdd == "." && oldStr.length == 19) {
             Toast.makeText(context, R.string.point_, Toast.LENGTH_LONG).show()
-            return currentText
+            inputEditText.setText(oldStr)
+            inputEditText.setSelection(cursorPosition)
+            return
         }
-        if (currentText == "0")
-            return inputText
-        return currentText + inputText
+
+        if (oldStr == "0") {
+            inputEditText.setText(strToAdd)
+            inputEditText.setSelection(cursorPosition + 1)
+            return
+        }
+        else {
+            newString = leftStrPart + strToAdd + rightStrPart
+            inputEditText.setText(newString)
+            inputEditText.setSelection(cursorPosition + 1)
+            return
+        }
     }
 
     fun clearAll(inputText: EditText, outputText: EditText) {

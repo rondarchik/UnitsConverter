@@ -44,6 +44,7 @@
                 android:layout_height="62dp"
                 android:layout_marginStart="15dp"
                 android:layout_weight="0"
+                android:longClickable="false"
                 android:cursorVisible="true"
                 android:ems="10"
                 android:importantForAutofill="no"
