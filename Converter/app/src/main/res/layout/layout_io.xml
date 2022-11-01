@@ -44,14 +44,15 @@
                 android:layout_height="62dp"
                 android:layout_marginStart="15dp"
                 android:layout_weight="0"
-                android:cursorVisible="false"
+                android:cursorVisible="true"
                 android:ems="10"
-                android:focusable="false"
+                android:importantForAutofill="no"
                 android:inputType="numberDecimal"
+                android:onClick="onInputClick"
                 android:text="0"
+                android:textIsSelectable="false"
                 app:layout_constraintHorizontal_bias="1.0"
-                tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck"
-                android:importantForAutofill="no" />
+                tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -138,7 +139,7 @@
 
             <EditText
                 android:id="@+id/output_edittext"
-                android:text="@string/_0"
+                android:text="@string/zero"
                 android:focusable="false"
                 android:cursorVisible="false"
                 android:layout_width="330dp"
@@ -146,6 +147,7 @@
                 android:layout_weight="0"
                 android:inputType="numberDecimal"
                 android:ems="10"
+                android:onClick="onOutputClick"
                 android:layout_marginStart="15dp"
                 app:layout_constraintHorizontal_bias="1.0"
                 tools:ignore="SpeakableTextPresentCheck"

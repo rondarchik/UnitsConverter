@@ -39,17 +39,14 @@
 
     <!--Toasts for Vadim-->
     <!--MainActivity-->
-    <string name="app_name_toast">Vadim, this is just a application name!\n٩(ఠ益ఠ)۶ </string>
     <string name="empty">Vadim, there\'s nothing here!\nStop tapping!!! ٩(ఠ益ఠ)۶</string>
     <!--CategoryActivity-->
-    <string name="category_name_toast">Vadim, this is just a category name!\n٩(ఠ益ఠ)۶</string>
     <string name="point_">Vadim, max length - 25..\nnow length 24\nНУ И КУДА ВСРАЛАСЬ ТЕБЕ ЭТА ТОЧКА!!!</string>
-    <string name="paste_toast">Vadim.. If you want to paste a text..\nClick on the button to the right!!!\n ٩(ఠ益ఠ)۶</string>
-    <string name="to_much_edittext">(_!_)</string>
+    <string name="long_click_edittext">Vadim.. If you want to paste a text..\nClick on the button to the right!!!\n ٩(ఠ益ఠ)۶</string>
     <string name="to_much_toast">Vadim, too much..\nMax: 25\n(_!_)</string>
-    <string name="to_much_frac_toast">Vadim, too much..\nMax fractional: 15\n(_!_)</string>
+    <string name="to_much_frac_toast">Vadim, too much..\nMax fractional: 10\n(_!_)</string>
     <string name="to_much_to_paste">Too much symbols to paste..\nChange the value and try again!</string>
     <string name="no_digits_to_paste">Your value has invalid characters..\nChange the value and try again!</string>
-    <string name="edittext">This field is for OUTPUT results, not INPUT!</string>
-    <string name="_0">0</string>
+    <string name="edittext">Vadim, this field is for OUTPUT results and it is NOT Editable!</string>
+    <string name="paste_edittext">Vadim, this field is for OUTPUT results and it is NOT Editable!\nSo you cant paste a value here..</string>
 </resources>

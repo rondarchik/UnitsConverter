@@ -190,7 +190,8 @@
                 android:text=""
                 android:textColor="@color/black"
                 android:textSize="40sp"
-                app:backgroundTint="@color/white" />
+                app:backgroundTint="@color/white"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
                 android:id="@+id/zero_button"

@@ -2,6 +2,7 @@ package rondarchik.calculator.converter
 
 
 import android.content.ClipboardManager
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -50,6 +51,11 @@ class MainActivity : AppCompatActivity() {
         this.inputService = InputService(this.applicationContext)
         this.ioService = IOService(this.applicationContext, clipboardManager)
 
+        val inputEditText: EditText = findViewById(R.id.input_edittext)
+        val outputEditText: EditText = findViewById(R.id. output_edittext)
+
+        inputEditText.showSoftInputOnFocus = false
+        outputEditText.showSoftInputOnFocus = false
     }
 
     fun onNumsButtonClick (view: View) {
@@ -122,6 +128,60 @@ class MainActivity : AppCompatActivity() {
                 switchButton.setOnClickListener {
                     ioService.switchValues(inputEditText, outputEditText, inputSpinner, outputSpinner)
                 }
+        }
+    }
+
+    fun onInputClick(view: View)
+    {
+        val input: EditText = findViewById(R.id.input_edittext)
+
+        input.setOnClickListener {
+            //
+        }
+        input.setOnLongClickListener {
+            ioService.pasteValue(input)
+            converter.convert(input, findViewById(R.id.output_edittext),
+                findViewById(R.id.input_spinner), findViewById(R.id.output_spinner))
+            true
+        }
+    }
+
+    fun onOutputClick(view: View) {
+        val output: EditText = findViewById(R.id.output_edittext)
+
+        output.setOnClickListener {
+            Toast.makeText(this.applicationContext, R.string.edittext, Toast.LENGTH_LONG).show()
+        }
+        output.setOnLongClickListener {
+            Toast.makeText(this.applicationContext, R.string.paste_edittext, Toast.LENGTH_LONG).show()
+            true
+        }
+    }
+
+
+    private fun updateText(strToAdd: String) {
+        //????
+        val inputEditText: EditText = findViewById(R.id.input_edittext)
+        val oldStr = inputEditText.text.toString()
+        val cursorPos = inputEditText.selectionStart
+        val leftStr = oldStr.substring(0, cursorPos)
+        val rightStr = oldStr.substring(cursorPos)
+
+        if (inputEditText.text?.length!! <= 25)
+        {
+            if ("" == inputEditText.text.toString()) {
+                val str = inputService.inputValidate(strToAdd, inputEditText.text.toString())
+                inputEditText.setText(str)
+                inputEditText.setSelection(cursorPos + 1)
+            }
+            else {
+                val str = inputService.inputValidate(strToAdd, inputEditText.text.toString())
+                inputEditText.setText(String.format("%s%s%s", leftStr, str, rightStr))
+                inputEditText.setSelection(cursorPos + 1)
+            }
+        }
+        else {
+            Toast.makeText(applicationContext, R.string.to_much_toast, Toast.LENGTH_SHORT).show()
         }
     }
 }

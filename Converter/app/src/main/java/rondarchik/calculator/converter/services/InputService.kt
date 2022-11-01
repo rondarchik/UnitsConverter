@@ -24,7 +24,7 @@ class InputService(private var context: Context) : AppCompatActivity() {
                 fractionalPart++
         }
 
-        if (fractionalPart >= 15) {
+        if (fractionalPart >= 10) {
             Toast.makeText(context, R.string.to_much_frac_toast, Toast.LENGTH_SHORT).show()
             return currentText
         }
