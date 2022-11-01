@@ -1,7 +1,7 @@
 package rondarchik.calculator.converter.converters
 
 class WeightConverter {
-    private val kilogramsToTones = (1.0 / 1000.0)
+    private val kilogramsToTones = 0.001
     private val kilogramsToPounds = 2.20462262185
     private val kilogramsToOunces = kilogramsToPounds * 16.0
 

@@ -2,14 +2,14 @@ package rondarchik.calculator.converter.converters
 
 class LengthConverter {
 
-    private val metersToKilometers = (1.0 / 1000.0)
+    private val metersToKilometers = 0.001
     private val metersToFeet = 3.28084
-    private val metersToMiles = (1.0 / 1609.34)
+    private val metersToMiles = 0.000621372737
 
     private val kilometersToFeet = metersToFeet * 1000
     private val kilometersToMiles = metersToMiles * 1000
 
-    private val feetToMiles = (1.0 / 5280.0)
+    private val feetToMiles = 0.000189393939
 
     fun metersToKilometers(value: Double, isReverseConversion: Boolean = false) : Double {
         return if (!isReverseConversion)

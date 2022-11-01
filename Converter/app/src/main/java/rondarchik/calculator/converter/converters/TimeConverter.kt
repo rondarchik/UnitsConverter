@@ -2,13 +2,13 @@ package rondarchik.calculator.converter.converters
 
 class TimeConverter {
     private val hoursToMinutes = 60.0
-    private val hoursToDays = (1.0 / 24.0)
-    private val hoursToYears = (1.0 / 8760)
+    private val hoursToDays = (1 / 24).toDouble()
+    private val hoursToYears = hoursToDays / 365
 
     private val minutesToDays = hoursToDays / 60.0
     private val minutesToYears = hoursToYears / 60.0
 
-    private val daysToYears = (1.0 / 365.0)
+    private val daysToYears = (1 / 365).toDouble()
 
     fun hoursToMinutes(value: Double, isReverseConversion: Boolean = false) : Double {
         return if (!isReverseConversion)
