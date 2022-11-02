@@ -1,9 +1,7 @@
 package rondarchik.calculator.converter.ui.weight
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
@@ -37,6 +35,27 @@ class WeightFragment : Fragment() {
         val outputEditText: EditText = binding.ioField.outputEdittext
         outputEditText.setText("0")
 
+        inputEditText.showSoftInputOnFocus = false
+        outputEditText.showSoftInputOnFocus = false
+
+        inputEditText.customSelectionActionModeCallback = object : ActionMode.Callback {
+            override fun onCreateActionMode(p0: ActionMode?, p1: Menu?): Boolean {
+                return false
+            }
+
+            override fun onPrepareActionMode(p0: ActionMode?, p1: Menu?): Boolean {
+                return false
+            }
+
+            override fun onActionItemClicked(p0: ActionMode?, p1: MenuItem?): Boolean {
+                return false
+            }
+
+            override fun onDestroyActionMode(p0: ActionMode?) {
+
+            }
+        }
+
         val inputSpinner: Spinner = binding.ioField.inputSpinner
         val outputSpinner: Spinner = binding.ioField.outputSpinner
 
@@ -64,6 +83,30 @@ class WeightFragment : Fragment() {
 
         val inputSpinner: Spinner = binding.ioField.inputSpinner
         val outputSpinner: Spinner = binding.ioField.outputSpinner
+
+        val inputEditText: EditText = binding.ioField.inputEdittext
+        val outputEditText: EditText = binding.ioField.outputEdittext
+
+        inputEditText.showSoftInputOnFocus = false
+        outputEditText.showSoftInputOnFocus = false
+
+        inputEditText.customSelectionActionModeCallback = object : ActionMode.Callback {
+            override fun onCreateActionMode(p0: ActionMode?, p1: Menu?): Boolean {
+                return false
+            }
+
+            override fun onPrepareActionMode(p0: ActionMode?, p1: Menu?): Boolean {
+                return false
+            }
+
+            override fun onActionItemClicked(p0: ActionMode?, p1: MenuItem?): Boolean {
+                return false
+            }
+
+            override fun onDestroyActionMode(p0: ActionMode?) {
+
+            }
+        }
 
         val adapter = ArrayAdapter.createFromResource(view.context, R.array.weight_list, R.layout.layout_spinner)
 

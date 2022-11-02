@@ -47,9 +47,9 @@ class InputService(private var context: Context) : AppCompatActivity() {
         }
 
         if (outputText.text.toString().length == 20) {
-            Toast.makeText(context, R.string.stop, Toast.LENGTH_SHORT).show()
-            inputEditText.setText(oldStr)
-            inputEditText.setSelection(cursorPosition)
+            Toast.makeText(context, R.string.stop, Toast.LENGTH_LONG).show()
+            inputEditText.setText(oldStr + strToAdd)
+            inputEditText.setSelection(cursorPosition + 1)
             return
         }
 
@@ -85,6 +85,11 @@ class InputService(private var context: Context) : AppCompatActivity() {
             newString = oldStr + strToAdd
             inputEditText.setText(newString)
             inputEditText.setSelection(cursorPosition + 2)
+            return
+        }
+        else if (oldStr == "0" && (strToAdd != "." || strToAdd != "0") && cursorPosition == 1) {
+            inputEditText.setText(strToAdd)
+            inputEditText.setSelection(cursorPosition)
             return
         }
 
@@ -161,8 +166,15 @@ class InputService(private var context: Context) : AppCompatActivity() {
         val inputStr = inputText.text.toString()
         val cursorPos = inputText.selectionStart
 
-        if (inputText.text.toString() == "0" || cursorPos == 0) {
+        if (inputText.text.toString() == "0") {
             Toast.makeText(context, R.string.nothing, Toast.LENGTH_SHORT).show()
+            inputText.setText(inputText.text.toString())
+            return
+        }
+        else if (inputText.text.toString() != "0" && cursorPos == 0) {
+            Toast.makeText(context, R.string.nothing, Toast.LENGTH_SHORT).show()
+            inputText.setText(inputText.text.toString())
+            return
         }
 
         if (cursorPos != 0 && inputStr != "0" && inputStr.length != 1) {
@@ -170,10 +182,12 @@ class InputService(private var context: Context) : AppCompatActivity() {
             selector.replace(cursorPos - 1, cursorPos, "")
             inputText.text = selector
             inputText.setSelection(cursorPos - 1)
+            return
         }
         else {
             inputText.setText("0")
             outputText.setText("0")
+            return
         }
     }
 }
