@@ -39,21 +39,22 @@
 
     <!--Toasts for Vadim-->
     <!--MainActivity-->
-    <string name="empty">Vadim, there\'s nothing here!\nStop tapping!!! ٩(ఠ益ఠ)۶</string>
+    <string name="empty">Vadim, there\'s nothing here! Stop tapping!!! ٩(ఠ益ఠ)۶</string>
     <!--CategoryActivity-->
-    <string name="stop">STOP!!!\nOutput value length is max, value will be cut</string>
+    <string name="max_integer">Vadim, too much..Max integer part: 15 (_!_)</string>
+    <string name="stop">STOP!!! Output value length is max, value will be cut</string>
     <string name="nothing">Nothing to delete!</string>
-    <string name="point_">Vadim, max length - 20..\nnow length 19\nНУ И КУДА ВСРАЛАСЬ ТЕБЕ ЭТА ТОЧКА!!!</string>
-    <string name="point2">Vadim, why do you need the second point?!\nНЕ НАДА ТАК!!! ٩(ఠ益ఠ)۶</string>
-    <string name="zero2">Vadim, why do you need so much zeros?!\nНЕ НАДА ТАК!!! ٩(ఠ益ఠ)۶</string>
-    <string name="long_click_edittext">Vadim.. If you want to paste a text..\nClick on the button to the right!!!\n ٩(ఠ益ఠ)۶</string>
-    <string name="to_much_toast">Vadim, too much..\nMax: 20\n(_!_)</string>
-    <string name="to_much_frac_toast">Vadim, too much..\nMax fractional part: 10\n(_!_)</string>
-    <string name="to_much_to_paste">Too much symbols..\nChange the value and try again!</string>
-    <string name="to_much_points_to_paste">Too much \'.\' symbols..\nChange the value and try again!</string>
-    <string name="to_much_zeros_to_paste">Too much zeros symbols in integer part of value..\nChange the value and try again!</string>
-    <string name="to_much_frac_to_paste">Too much fractional part..\nChange the value and try again!</string>
-    <string name="no_digits_to_paste">Your value has invalid characters..\nChange the value and try again!</string>
+    <string name="point_">Vadim, max length - 20..now length 19 НУ И КУДА ВСРАЛАСЬ ТЕБЕ ЭТА ТОЧКА!!!</string>
+    <string name="point2">Vadim, why do you need the second point?! НЕ НАДА ТАК!!! ٩(ఠ益ఠ)۶</string>
+    <string name="zero2">Vadim, why do you need so much zeros?! НЕ НАДА ТАК!!! ٩(ఠ益ఠ)۶</string>
+    <string name="long_click_edittext">Vadim.. If you want to paste a text.. Click on the button to the right!!! ٩(ఠ益ఠ)۶</string>
+    <string name="to_much_toast">Vadim, too much.. Max: 20 (_!_)</string>
+    <string name="to_much_frac_toast">Vadim, too much.. Max fractional part: 10 (_!_)</string>
+    <string name="to_much_to_paste">Too much symbols..Change the value and try again!</string>
+    <string name="to_much_points_to_paste">Too much \'.\' symbols.. Change the value and try again!</string>
+    <string name="to_much_zeros_to_paste">Too much zeros symbols in integer part of value..Change the value and try again!</string>
+    <string name="to_much_frac_to_paste">Too much fractional part.. Change the value and try again!</string>
+    <string name="no_digits_to_paste">Your value has invalid characters..Change the value and try again!</string>
     <string name="edittext">Vadim, this field is for OUTPUT results and it is NOT Editable!</string>
-    <string name="paste_edittext">Vadim, this field is for OUTPUT results and it is NOT Editable!\nSo you can not paste a value here..</string>
+    <string name="paste_edittext">Vadim, this field is for OUTPUT results and it is NOT Editable! So you can not paste a value here..</string>
 </resources>

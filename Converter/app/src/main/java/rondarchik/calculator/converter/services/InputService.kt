@@ -30,6 +30,13 @@ class InputService(private var context: Context) : AppCompatActivity() {
         if (oldStr[0] == '0')
             zeroIsFirst = true
 
+        if (oldStr.length >= 20) {
+            Toast.makeText(context, R.string.to_much_toast, Toast.LENGTH_SHORT).show()
+            inputEditText.setText(oldStr)
+            inputEditText.setSelection(cursorPosition)
+            return
+        }
+
         if (cursorPosition < beforePointPart.length) {
             if (strToAdd == "0" && zeroIsFirst && cursorPosition == 0) {
                 Toast.makeText(context, R.string.zero2, Toast.LENGTH_LONG).show()
@@ -50,13 +57,6 @@ class InputService(private var context: Context) : AppCompatActivity() {
             Toast.makeText(context, R.string.stop, Toast.LENGTH_LONG).show()
             inputEditText.setText(oldStr + strToAdd)
             inputEditText.setSelection(cursorPosition + 1)
-            return
-        }
-
-        if (oldStr.length > 20) {
-            Toast.makeText(context, R.string.to_much_toast, Toast.LENGTH_SHORT).show()
-            inputEditText.setText(oldStr)
-            inputEditText.setSelection(cursorPosition)
             return
         }
 
@@ -136,6 +136,13 @@ class InputService(private var context: Context) : AppCompatActivity() {
         }
         else if (strToAdd == "." && oldStr.length == 19) {
             Toast.makeText(context, R.string.point_, Toast.LENGTH_LONG).show()
+            inputEditText.setText(oldStr)
+            inputEditText.setSelection(cursorPosition)
+            return
+        }
+
+        if (oldStr.length == 15 && !pointFlag) {
+            Toast.makeText(context, R.string.max_integer, Toast.LENGTH_LONG).show()
             inputEditText.setText(oldStr)
             inputEditText.setSelection(cursorPosition)
             return

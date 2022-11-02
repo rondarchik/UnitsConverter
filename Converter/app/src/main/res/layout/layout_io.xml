@@ -47,8 +47,6 @@
                 android:cursorVisible="true"
                 android:ems="10"
                 android:importantForAutofill="no"
-                android:maxLength="20"
-                android:inputType="numberDecimal"
                 android:longClickable="false"
                 android:windowSoftInputMode="stateHidden"
                 android:text="0"

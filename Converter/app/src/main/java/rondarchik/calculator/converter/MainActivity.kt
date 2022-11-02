@@ -66,14 +66,17 @@ class MainActivity : AppCompatActivity() {
 
         inputEditText.customSelectionActionModeCallback = object : ActionMode.Callback {
             override fun onCreateActionMode(p0: ActionMode?, p1: Menu?): Boolean {
+                Toast.makeText(applicationContext, "ahahahhahahhah (_!_)", Toast.LENGTH_SHORT).show()
                 return false
             }
 
             override fun onPrepareActionMode(p0: ActionMode?, p1: Menu?): Boolean {
+                Toast.makeText(applicationContext, "ahahahhahahhah (_!_)", Toast.LENGTH_SHORT).show()
                 return false
             }
 
             override fun onActionItemClicked(p0: ActionMode?, p1: MenuItem?): Boolean {
+                Toast.makeText(applicationContext, "ahahahhahahhah (_!_)", Toast.LENGTH_SHORT).show()
                 return false
             }
 
