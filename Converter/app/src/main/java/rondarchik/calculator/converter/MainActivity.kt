@@ -3,6 +3,9 @@ package rondarchik.calculator.converter
 
 import android.content.ClipboardManager
 import android.os.Bundle
+import android.view.ActionMode
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
@@ -16,7 +19,6 @@ import rondarchik.calculator.converter.converters.Converter
 import rondarchik.calculator.converter.databinding.ActivityMainBinding
 import rondarchik.calculator.converter.services.IOService
 import rondarchik.calculator.converter.services.InputService
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,6 +42,12 @@ class MainActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
 
+        val inputEditText: EditText = findViewById(R.id.input_edittext)
+        val outputEditText: EditText = findViewById(R.id. output_edittext)
+
+        inputEditText.showSoftInputOnFocus = false
+        outputEditText.showSoftInputOnFocus = false
+
         clipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
 
     }
@@ -55,6 +63,24 @@ class MainActivity : AppCompatActivity() {
 
         inputEditText.showSoftInputOnFocus = false
         outputEditText.showSoftInputOnFocus = false
+
+        inputEditText.customSelectionActionModeCallback = object : ActionMode.Callback {
+            override fun onCreateActionMode(p0: ActionMode?, p1: Menu?): Boolean {
+                return false
+            }
+
+            override fun onPrepareActionMode(p0: ActionMode?, p1: Menu?): Boolean {
+                return false
+            }
+
+            override fun onActionItemClicked(p0: ActionMode?, p1: MenuItem?): Boolean {
+                return false
+            }
+
+            override fun onDestroyActionMode(p0: ActionMode?) {
+
+            }
+        }
     }
 
     fun onNumsButtonClick (view: View) {
@@ -64,17 +90,17 @@ class MainActivity : AppCompatActivity() {
         val outputSpinner: Spinner = findViewById(R.id.output_spinner)
 
         when (view.id) {
-            R.id.zero_button -> inputService.updateInputText("0", inputEditText)
-            R.id.one_button -> inputService.updateInputText("1", inputEditText)
-            R.id.two_button -> inputService.updateInputText("2", inputEditText)
-            R.id.three_button -> inputService.updateInputText("3", inputEditText)
-            R.id.four_button -> inputService.updateInputText("4", inputEditText)
-            R.id.five_button -> inputService.updateInputText("5", inputEditText)
-            R.id.six_button -> inputService.updateInputText("6", inputEditText)
-            R.id.seven_button -> inputService.updateInputText("7", inputEditText)
-            R.id.eight_button -> inputService.updateInputText("8", inputEditText)
-            R.id.nine_button -> inputService.updateInputText("9", inputEditText)
-            R.id.point_button -> inputService.updateInputText(".", inputEditText)
+            R.id.zero_button -> inputService.updateInputText("0", inputEditText, outputEditText)
+            R.id.one_button -> inputService.updateInputText("1", inputEditText, outputEditText)
+            R.id.two_button -> inputService.updateInputText("2", inputEditText, outputEditText)
+            R.id.three_button -> inputService.updateInputText("3", inputEditText, outputEditText)
+            R.id.four_button -> inputService.updateInputText("4", inputEditText, outputEditText)
+            R.id.five_button -> inputService.updateInputText("5", inputEditText, outputEditText)
+            R.id.six_button -> inputService.updateInputText("6", inputEditText, outputEditText)
+            R.id.seven_button -> inputService.updateInputText("7", inputEditText, outputEditText)
+            R.id.eight_button -> inputService.updateInputText("8", inputEditText, outputEditText)
+            R.id.nine_button -> inputService.updateInputText("9", inputEditText, outputEditText)
+            R.id.point_button -> inputService.updateInputText(".", inputEditText, outputEditText)
             else -> inputEditText.text = inputEditText.text
         }
 
@@ -91,7 +117,7 @@ class MainActivity : AppCompatActivity() {
             R.id.empty -> Toast.makeText(applicationContext, R.string.empty, Toast.LENGTH_SHORT).show()
             R.id.clear_button -> inputService.clearAll(inputEditText, outputEditText)
             R.id.delete_button -> {
-                inputService.deleteSymbol(inputEditText)
+                inputService.deleteSymbol(inputEditText, outputEditText)
                 converter.convert(inputEditText, outputEditText, inputSpinner, outputSpinner)
             }
         }
@@ -126,22 +152,6 @@ class MainActivity : AppCompatActivity() {
                 switchButton.setOnClickListener {
                     ioService.switchValues(inputEditText, outputEditText, inputSpinner, outputSpinner)
                 }
-        }
-    }
-
-    fun onInputClick(view: View)
-    {
-        val input: EditText = findViewById(R.id.input_edittext)
-
-        input.setOnClickListener {
-            //
-        }
-        input.setOnLongClickListener {
-            ioService.pasteValue(input)
-            input.setSelection(input.text.toString().length)
-            converter.convert(input, findViewById(R.id.output_edittext),
-                findViewById(R.id.input_spinner), findViewById(R.id.output_spinner))
-            true
         }
     }
 

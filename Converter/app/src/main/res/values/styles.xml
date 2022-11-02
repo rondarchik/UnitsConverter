@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Custom">
+        <item name="android:textSelectHandleLeft">@drawable/zero_px</item>
+        <item name="android:textSelectHandleRight">@drawable/zero_px</item>
+        <item name="android:textSelectHandle">@drawable/zero_px</item>
+    </style>
+</resources>

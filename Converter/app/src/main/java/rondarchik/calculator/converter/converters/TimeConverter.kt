@@ -2,7 +2,7 @@ package rondarchik.calculator.converter.converters
 
 class TimeConverter {
     private val hoursToMinutes = 60.0
-    private val hoursToDays = (1 / 24).toDouble()
+    private val hoursToDays = 1.0 / 24.0
     private val hoursToYears = hoursToDays / 365
 
     private val minutesToDays = hoursToDays / 60.0

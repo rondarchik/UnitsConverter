@@ -1,6 +1,7 @@
 package rondarchik.calculator.converter.services
 
 import android.content.Context
+import android.text.SpannableStringBuilder
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -8,12 +9,16 @@ import rondarchik.calculator.converter.R
 
 class InputService(private var context: Context) : AppCompatActivity() {
 
-    fun updateInputText(strToAdd: String, inputEditText: EditText) {
+    fun updateInputText(strToAdd: String, inputEditText: EditText, outputText: EditText) {
         // cursor
         val oldStr = inputEditText.text.toString()
         val cursorPosition = inputEditText.selectionStart
+//        if (strToAdd == ".")
+//            inputEditText.setSelection(cursorPosition + 1)
         val leftStrPart = oldStr.substring(0, cursorPosition)
         val rightStrPart = oldStr.substring(cursorPosition)
+        val beforePointPart = oldStr.substringBefore('.')
+        var zeroIsFirst = false
         val newString: String
         // point validate
         var fractionalPartCounter = 0
@@ -21,6 +26,32 @@ class InputService(private var context: Context) : AppCompatActivity() {
         var pointFlag = false
         // zero validate
         var zeroFlag = true
+
+        if (oldStr[0] == '0')
+            zeroIsFirst = true
+
+        if (cursorPosition < beforePointPart.length) {
+            if (strToAdd == "0" && zeroIsFirst && cursorPosition == 0) {
+                Toast.makeText(context, R.string.zero2, Toast.LENGTH_LONG).show()
+                inputEditText.setText(oldStr)
+                inputEditText.setSelection(cursorPosition)
+                return
+            }
+        }
+
+        if (cursorPosition == oldStr.length && oldStr == "0" && strToAdd == "0") {
+            Toast.makeText(context, R.string.zero2, Toast.LENGTH_LONG).show()
+            inputEditText.setText(oldStr)
+            inputEditText.setSelection(cursorPosition)
+            return
+        }
+
+        if (outputText.text.toString().length == 20) {
+            Toast.makeText(context, R.string.stop, Toast.LENGTH_SHORT).show()
+            inputEditText.setText(oldStr)
+            inputEditText.setSelection(cursorPosition)
+            return
+        }
 
         if (oldStr.length > 20) {
             Toast.makeText(context, R.string.to_much_toast, Toast.LENGTH_SHORT).show()
@@ -41,6 +72,19 @@ class InputService(private var context: Context) : AppCompatActivity() {
             Toast.makeText(context, R.string.to_much_frac_toast, Toast.LENGTH_SHORT).show()
             inputEditText.setText(oldStr)
             inputEditText.setSelection(cursorPosition)
+            return
+        }
+
+        if (strToAdd == "." && oldStr == "0" && cursorPosition == oldStr.length) {
+            newString = leftStrPart + strToAdd + rightStrPart
+            inputEditText.setText(newString)
+            inputEditText.setSelection(cursorPosition + 1)
+            return
+        }
+        else if (strToAdd == "." && oldStr == "0") {
+            newString = oldStr + strToAdd
+            inputEditText.setText(newString)
+            inputEditText.setSelection(cursorPosition + 2)
             return
         }
 
@@ -106,18 +150,30 @@ class InputService(private var context: Context) : AppCompatActivity() {
     }
 
     fun clearAll(inputText: EditText, outputText: EditText) {
+        if (inputText.text.toString() == "0") {
+            Toast.makeText(context, R.string.nothing, Toast.LENGTH_SHORT).show()
+        }
         inputText.setText("0")
         outputText.setText("0")
     }
 
-    fun deleteSymbol(inputText: EditText) {
-        var inputStr = inputText.text.toString()
+    fun deleteSymbol(inputText: EditText, outputText: EditText) {
+        val inputStr = inputText.text.toString()
+        val cursorPos = inputText.selectionStart
 
-        if (inputStr.length == 1)
-            inputText.setText("0")
+        if (inputText.text.toString() == "0" || cursorPos == 0) {
+            Toast.makeText(context, R.string.nothing, Toast.LENGTH_SHORT).show()
+        }
+
+        if (cursorPos != 0 && inputStr != "0" && inputStr.length != 1) {
+            val selector: SpannableStringBuilder = inputText.text as SpannableStringBuilder
+            selector.replace(cursorPos - 1, cursorPos, "")
+            inputText.text = selector
+            inputText.setSelection(cursorPos - 1)
+        }
         else {
-            inputStr = inputStr.dropLast(1)
-            inputText.setText(inputStr)
+            inputText.setText("0")
+            outputText.setText("0")
         }
     }
 }

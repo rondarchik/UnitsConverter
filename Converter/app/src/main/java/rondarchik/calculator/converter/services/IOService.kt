@@ -7,9 +7,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.RestrictTo
 import rondarchik.calculator.converter.R
-import java.util.Locale.filter
 
 class IOService(private var context: Context, private var clipboardManager: ClipboardManager) {
 
@@ -48,11 +46,12 @@ class IOService(private var context: Context, private var clipboardManager: Clip
         val strToPaste = item.text.toString()
         val correctCharacters = "0123456789."
 
-        var pointCounter = strToPaste.count { it == '.' }
+        val pointCounter = strToPaste.count { it == '.' }
         var fractionalFlag = false
         var fractionalPartCounter = 0
-        var beforePointPart = strToPaste.substringBefore('.')
-        var zeroCounter = beforePointPart.count { it == '0' }
+        val beforePointPart = strToPaste.substringBefore('.')
+        val zeroCounter = beforePointPart.count { it == '0' }
+        val zeroCounterPro = strToPaste.count { it == '0' } + oldStr.count { it == '0' }
 
         if (pointCounter > 1) {
             Toast.makeText(context, R.string.to_much_points_to_paste, Toast.LENGTH_LONG).show()
@@ -71,7 +70,7 @@ class IOService(private var context: Context, private var clipboardManager: Clip
             }
         }
 
-        if (zeroCounter > 1 && pointCounter != 0) {
+        if ((zeroCounter > 1 && pointCounter != 0) || zeroCounterPro > 1) {
             Toast.makeText(context, R.string.to_much_zeros_to_paste, Toast.LENGTH_LONG).show()
             return
         }

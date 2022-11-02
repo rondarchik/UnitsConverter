@@ -47,6 +47,9 @@
                 android:inputType="numberDecimal"
                 android:onClick="onInputClick"
                 android:text="0"
+                style="@style/Custom"
+                android:windowSoftInputMode="stateHidden"
+                android:maxLength="20"
                 android:textIsSelectable="false"
                 app:layout_constraintHorizontal_bias="1.0"
                 tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
@@ -144,6 +147,8 @@
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
                 android:onClick="onOutputClick"
+                android:maxLength="20"
+                android:windowSoftInputMode="stateHidden"
                 android:text="@string/zero"
                 app:layout_constraintHorizontal_bias="1.0"
                 tools:ignore="SpeakableTextPresentCheck" />
