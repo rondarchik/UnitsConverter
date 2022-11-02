@@ -13,8 +13,6 @@ class InputService(private var context: Context) : AppCompatActivity() {
         // cursor
         val oldStr = inputEditText.text.toString()
         val cursorPosition = inputEditText.selectionStart
-//        if (strToAdd == ".")
-//            inputEditText.setSelection(cursorPosition + 1)
         val leftStrPart = oldStr.substring(0, cursorPosition)
         val rightStrPart = oldStr.substring(cursorPosition)
         val beforePointPart = oldStr.substringBefore('.')
@@ -30,7 +28,7 @@ class InputService(private var context: Context) : AppCompatActivity() {
         if (oldStr[0] == '0')
             zeroIsFirst = true
 
-        if (oldStr.length >= 20) {
+        if (oldStr.length >= 16) {
             Toast.makeText(context, R.string.to_much_toast, Toast.LENGTH_SHORT).show()
             inputEditText.setText(oldStr)
             inputEditText.setSelection(cursorPosition)
@@ -53,7 +51,7 @@ class InputService(private var context: Context) : AppCompatActivity() {
             return
         }
 
-        if (outputText.text.toString().length == 20) {
+        if (outputText.text.toString().length == 16) {
             Toast.makeText(context, R.string.stop, Toast.LENGTH_LONG).show()
             inputEditText.setText(oldStr + strToAdd)
             inputEditText.setSelection(cursorPosition + 1)
@@ -114,7 +112,7 @@ class InputService(private var context: Context) : AppCompatActivity() {
                 return
             }
         }
-        else if (strToAdd == "." && oldStr.length < 20) {
+        else if (strToAdd == "." && oldStr.length < 16) {
             oldStr.forEach {
                 if (it == '.') {
                     pointFlag = true
@@ -134,7 +132,7 @@ class InputService(private var context: Context) : AppCompatActivity() {
                 return
             }
         }
-        else if (strToAdd == "." && oldStr.length == 19) {
+        else if (strToAdd == "." && oldStr.length == 15) {
             Toast.makeText(context, R.string.point_, Toast.LENGTH_LONG).show()
             inputEditText.setText(oldStr)
             inputEditText.setSelection(cursorPosition)

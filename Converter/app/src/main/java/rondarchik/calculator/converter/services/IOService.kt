@@ -8,6 +8,7 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import rondarchik.calculator.converter.R
+import kotlin.reflect.typeOf
 
 class IOService(private var context: Context, private var clipboardManager: ClipboardManager) {
 
@@ -16,12 +17,14 @@ class IOService(private var context: Context, private var clipboardManager: Clip
     fun switchValues(inputEditText: EditText, outputEditText: EditText,
                      inputSpinner: Spinner, outputSpinner: Spinner) {
         val inputStr = inputEditText.text.toString()
+        val outputStr = outputEditText.text.toString()
         val inputSpinnerId = inputSpinner.selectedItemId.toInt()
+        val outputSpinnerId = outputSpinner.selectedItemId.toInt()
 
-        inputEditText.setText(outputEditText.text.toString())
+        inputEditText.setText(outputStr)
         outputEditText.setText(inputStr)
 
-        inputSpinner.setSelection(outputSpinner.selectedItemId.toInt(), true)
+        inputSpinner.setSelection(outputSpinnerId, true)
         outputSpinner.setSelection(inputSpinnerId, true)
     }
 

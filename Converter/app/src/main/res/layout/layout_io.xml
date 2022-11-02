@@ -48,6 +48,7 @@
                 android:ems="10"
                 android:importantForAutofill="no"
                 android:longClickable="false"
+                android:inputType="numberDecimal"
                 android:windowSoftInputMode="stateHidden"
                 android:text="0"
                 style="@style/Custom"

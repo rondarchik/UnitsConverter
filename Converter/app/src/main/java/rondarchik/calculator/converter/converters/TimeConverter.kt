@@ -1,54 +1,56 @@
 package rondarchik.calculator.converter.converters
 
+import java.math.BigDecimal
+
 class TimeConverter {
-    private val hoursToMinutes = 60.0
-    private val hoursToDays = 1.0 / 24.0
-    private val hoursToYears = hoursToDays / 365
+    private val hoursToMinutes = BigDecimal(60)
+    private val hoursToDays = BigDecimal(24)
+    private val hoursToYears = BigDecimal(8760)
 
-    private val minutesToDays = hoursToDays / 60.0
-    private val minutesToYears = hoursToYears / 60.0
+    private val minutesToDays = BigDecimal(1440)
+    private val minutesToYears = BigDecimal(525600)
 
-    private val daysToYears = (1 / 365).toDouble()
+    private val daysToYears = BigDecimal(365)
 
-    fun hoursToMinutes(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun hoursToMinutes(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * hoursToMinutes
+            value.multiply(hoursToMinutes)
         else
-            value / hoursToMinutes
+            value.divide(hoursToMinutes)
     }
 
-    fun hoursToDays(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun hoursToDays(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * hoursToDays
+            value.divide(hoursToDays)
         else
-            value / hoursToDays
+            value.multiply(hoursToDays)
     }
 
-    fun hoursToYears(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun hoursToYears(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * hoursToYears
+            value.divide(hoursToYears)
         else
-            value / hoursToYears
+            value.multiply(hoursToYears)
     }
 
-    fun minutesToDays(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun minutesToDays(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * minutesToDays
+            value.divide(minutesToDays)
         else
-            value / minutesToDays
+            value.multiply(minutesToDays)
     }
 
-    fun minutesToYears(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun minutesToYears(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * minutesToYears
+            value.divide(minutesToYears)
         else
-            value / minutesToYears
+            value.multiply(minutesToYears)
     }
 
-    fun daysToYears(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun daysToYears(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * daysToYears
+            value.divide(daysToYears)
         else
-            value / daysToYears
+            value.multiply(daysToYears)
     }
 }

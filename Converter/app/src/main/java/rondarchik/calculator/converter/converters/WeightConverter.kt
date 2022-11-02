@@ -1,55 +1,57 @@
 package rondarchik.calculator.converter.converters
 
+import java.math.BigDecimal
+
 class WeightConverter {
-    private val kilogramsToTones = 0.001
-    private val kilogramsToPounds = 2.20462262185
-    private val kilogramsToOunces = kilogramsToPounds * 16.0
+    private val kilogramsToTones = BigDecimal(1000)
+    private val kilogramsToPounds = BigDecimal(2.20462262)
+    private val kilogramsToOunces = BigDecimal(35.2739619)
 
-    private val tonesToPounds = kilogramsToPounds * 1000
-    private val tonesToOunces = kilogramsToOunces * 1000
+    private val tonesToPounds = kilogramsToPounds.multiply(kilogramsToTones)
+    private val tonesToOunces = kilogramsToOunces.multiply(kilogramsToTones)
 
-    private val poundsToOunces = 16.0
+    private val poundsToOunces = BigDecimal(16)
 
-    fun kilogramsToTones(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun kilogramsToTones(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * kilogramsToTones
+            value.divide(kilogramsToTones)
         else
-            value / kilogramsToTones
+            value.multiply(kilogramsToTones)
     }
 
-    fun kilogramsToPounds(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun kilogramsToPounds(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * kilogramsToPounds
+            value.multiply(kilogramsToPounds)
         else
-            value / kilogramsToPounds
+            value.divide(kilogramsToPounds)
     }
 
-    fun kilogramsToOunces(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun kilogramsToOunces(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * kilogramsToOunces
+            value.multiply(kilogramsToOunces)
         else
             value / kilogramsToOunces
     }
 
-    fun tonesToPounds(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun tonesToPounds(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * tonesToPounds
+            value.multiply(tonesToPounds)
         else
-            value / tonesToPounds
+            value.divide(tonesToPounds)
     }
 
-    fun tonesToOunces(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun tonesToOunces(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * tonesToOunces
+            value.multiply(tonesToOunces)
         else
-            value / tonesToOunces
+            value.divide(tonesToOunces)
     }
 
-    fun poundsToOunces(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun poundsToOunces(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * poundsToOunces
+            value.multiply(poundsToOunces)
         else
-            value / poundsToOunces
+            value.divide(poundsToOunces)
     }
 
 }

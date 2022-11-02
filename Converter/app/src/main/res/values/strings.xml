@@ -44,11 +44,11 @@
     <string name="max_integer">Vadim, too much..Max integer part: 15 (_!_)</string>
     <string name="stop">STOP!!! Output value length is max, value will be cut</string>
     <string name="nothing">Nothing to delete!</string>
-    <string name="point_">Vadim, max length - 20..now length 19 НУ И КУДА ВСРАЛАСЬ ТЕБЕ ЭТА ТОЧКА!!!</string>
+    <string name="point_">Vadim, max length - 16..now length 15 НУ И КУДА ВСРАЛАСЬ ТЕБЕ ЭТА ТОЧКА!!!</string>
     <string name="point2">Vadim, why do you need the second point?! НЕ НАДА ТАК!!! ٩(ఠ益ఠ)۶</string>
     <string name="zero2">Vadim, why do you need so much zeros?! НЕ НАДА ТАК!!! ٩(ఠ益ఠ)۶</string>
     <string name="long_click_edittext">Vadim.. If you want to paste a text.. Click on the button to the right!!! ٩(ఠ益ఠ)۶</string>
-    <string name="to_much_toast">Vadim, too much.. Max: 20 (_!_)</string>
+    <string name="to_much_toast">Vadim, too much.. Max: 16 (_!_)</string>
     <string name="to_much_frac_toast">Vadim, too much.. Max fractional part: 10 (_!_)</string>
     <string name="to_much_to_paste">Too much symbols..Change the value and try again!</string>
     <string name="to_much_points_to_paste">Too much \'.\' symbols.. Change the value and try again!</string>

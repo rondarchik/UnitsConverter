@@ -1,55 +1,57 @@
 package rondarchik.calculator.converter.converters
 
+import java.math.BigDecimal
+
 class LengthConverter {
 
-    private val metersToKilometers = 0.001
-    private val metersToFeet = 3.28084
-    private val metersToMiles = 0.000621372737
+    private val metersToKilometers = BigDecimal(1000)
+    private val metersToFeet = BigDecimal(3.2808399)
+    private val metersToMiles = BigDecimal(0.000621371192)
 
-    private val kilometersToFeet = metersToFeet * 1000
-    private val kilometersToMiles = metersToMiles * 1000
+    private val kilometersToFeet = BigDecimal(3280.8399)
+    private val kilometersToMiles = BigDecimal(0.621371192)
 
-    private val feetToMiles = 0.000189393939
+    private val feetToMiles = BigDecimal(5280)
 
-    fun metersToKilometers(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun metersToKilometers(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * metersToKilometers
+            value.divide(metersToKilometers)
         else
-            value / metersToKilometers
+            value.multiply(metersToKilometers)
     }
 
-    fun metersToFeet(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun metersToFeet(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * metersToFeet
+            value.multiply(metersToFeet)
         else
-            value / metersToFeet
+            value.divide(metersToFeet)
     }
 
-    fun metersToMiles(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun metersToMiles(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * metersToMiles
+            value.multiply(metersToMiles)
         else
-            value / metersToMiles
+            value.divide(metersToMiles)
     }
 
-    fun kilometersToFeet(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun kilometersToFeet(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * kilometersToFeet
+            value.multiply(kilometersToFeet)
         else
-            value / kilometersToFeet
+            value.divide(kilometersToFeet)
     }
 
-    fun kilometersToMiles(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun kilometersToMiles(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * kilometersToMiles
+            value.multiply(kilometersToMiles)
         else
-            value / kilometersToMiles
+            value.divide(kilometersToMiles)
     }
 
-    fun feetToMiles(value: Double, isReverseConversion: Boolean = false) : Double {
+    fun feetToMiles(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
         return if (!isReverseConversion)
-            value * feetToMiles
+            value.divide(feetToMiles)
         else
-            value / feetToMiles
+            value.multiply(feetToMiles)
     }
 }
