@@ -3,7 +3,7 @@
     <string-array name="weight_list">
         <item>Kilograms (kg)</item>
         <item>Tones (t)</item>
-        <item>Pounds (lb)</item>
-        <item>Ounces (oz)</item>
+        <item>Quintals (q)</item>
+        <item>Grams (g)</item>
     </string-array>
 </resources>

@@ -4,6 +4,6 @@
         <item>Hours (h)</item>
         <item>Minutes (min)</item>
         <item>Days (d)</item>
-        <item>Years (y)</item>
+        <item>Seconds (sec)</item>
     </string-array>
 </resources>

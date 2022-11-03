@@ -3,7 +3,7 @@
     <string-array name="length_list">
         <item>Meters (m)</item>
         <item>Kilometers (km)</item>
-        <item>Feet (ft)</item>
-        <item>Miles (mi)</item>
+        <item>Centimeters (cm)</item>
+        <item>Millimeters (mm)</item>
     </string-array>
 </resources>

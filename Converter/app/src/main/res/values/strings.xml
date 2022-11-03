@@ -14,8 +14,8 @@
     <string name="delete_button">Delete one symbol</string>
     <string name="erase_button">Clear everything</string>
     <string name="spinner_text">Tap to choose unit</string>
-    <string name="copy_message">Copied!</string>
-    <string name="paste_message">Pasted!</string>
+    <string name="copy_message">Скопировано!</string>
+    <string name="paste_message">Вставлено!</string>
     <string name="category_name">Unit name></string>
     <string name="category_image">Image for unit</string>
     <string name="length_image">Image for length</string>
@@ -39,22 +39,19 @@
 
     <!--Toasts for Vadim-->
     <!--MainActivity-->
-    <string name="empty">Vadim, there\'s nothing here! Stop tapping!!! ٩(ఠ益ఠ)۶</string>
+    <string name="empty">Тут ничего нет.. Хватить кликать!</string>
     <!--CategoryActivity-->
-    <string name="max_integer">Vadim, too much..Max integer part: 15 (_!_)</string>
-    <string name="stop">STOP!!! Output value length is max, value will be cut</string>
-    <string name="nothing">Nothing to delete!</string>
-    <string name="point_">Vadim, max length - 16..now length 15 НУ И КУДА ВСРАЛАСЬ ТЕБЕ ЭТА ТОЧКА!!!</string>
-    <string name="point2">Vadim, why do you need the second point?! НЕ НАДА ТАК!!! ٩(ఠ益ఠ)۶</string>
-    <string name="zero2">Vadim, why do you need so much zeros?! НЕ НАДА ТАК!!! ٩(ఠ益ఠ)۶</string>
-    <string name="long_click_edittext">Vadim.. If you want to paste a text.. Click on the button to the right!!! ٩(ఠ益ఠ)۶</string>
-    <string name="to_much_toast">Vadim, too much.. Max: 16 (_!_)</string>
-    <string name="to_much_frac_toast">Vadim, too much.. Max fractional part: 10 (_!_)</string>
-    <string name="to_much_to_paste">Too much symbols..Change the value and try again!</string>
-    <string name="to_much_points_to_paste">Too much \'.\' symbols.. Change the value and try again!</string>
-    <string name="to_much_zeros_to_paste">Too much zeros symbols in integer part of value..Change the value and try again!</string>
-    <string name="to_much_frac_to_paste">Too much fractional part.. Change the value and try again!</string>
-    <string name="no_digits_to_paste">Your value has invalid characters..Change the value and try again!</string>
-    <string name="edittext">Vadim, this field is for OUTPUT results and it is NOT Editable!</string>
-    <string name="paste_edittext">Vadim, this field is for OUTPUT results and it is NOT Editable! So you can not paste a value here..</string>
+    <string name="stop">СТОИТ ОСТАНОВИТЬСЯ!!! \n Значение может быть обрезано</string>
+    <string name="nothing">Вообще-то нечего удалять :)</string>
+    <string name="point_">МАХ - 50, сейчас 49 \n НУ И КУДА ВСРАЛАСЬ ТЕБЕ ЭТА ТОЧКА!!!</string>
+    <string name="point2">Ну и зачем тебе 2-я точка?! \n НЕ НАДА ТАК!!!</string>
+    <string name="zero2">Какое-то шаманство с нулями -_-</string>
+    <string name="no">НЕ НАДА ТАК.. \n Ну поставь точку по человечески!</string>
+    <string name="to_much_toast">Переборщил чутка :)\n MAX: 50</string>
+    <string name="to_much_to_paste">Слишком много.. \n Измени значение и попробуй снова :)</string>
+    <string name="to_much_points_to_paste">Как-то слишком много \'.\' \n Измени значение и попробуй снова :)</string>
+    <string name="to_much_zeros_to_paste">Какое-то шаманство с нулями -_- \n Измени значение и попробуй снова :)</string>
+    <string name="no_digits_to_paste">Ты уверен, что это число? \n Измени значение и попробуй снова :)</string>
+    <string name="edittext">Это всего лишь поле для вывода результатов.. \n Оно НЕИЗМЕНЯЕМО, не пытайся его изменить :3</string>
+    <string name="paste_edittext">Это всего лишь поле для вывода результатов.. \n Оно НЕИЗМЕНЯЕМО, не пытайся сюда что-то вставить :3</string>
 </resources>

@@ -6,7 +6,6 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import rondarchik.calculator.converter.R
 import rondarchik.calculator.converter.databinding.FragmentTimeBinding
 import rondarchik.calculator.converter.services.SpinnerListener
@@ -28,10 +27,7 @@ class TimeFragment : Fragment() {
         _binding = FragmentTimeBinding.inflate(inflater, container, false)
 
         val inputEditText: EditText = binding.ioField.inputEdittext
-        inputEditText.setText("0")
-
         val outputEditText: EditText = binding.ioField.outputEdittext
-        outputEditText.setText("0")
 
         inputEditText.showSoftInputOnFocus = false
         outputEditText.showSoftInputOnFocus = false
@@ -64,12 +60,6 @@ class TimeFragment : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        val timeViewModel = ViewModelProvider(this)[TimeViewModel::class.java]
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -78,11 +68,15 @@ class TimeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val inputEditText: EditText = binding.ioField.inputEdittext
+        val outputEditText: EditText = binding.ioField.outputEdittext
+
         val inputSpinner: Spinner = binding.ioField.inputSpinner
         val outputSpinner: Spinner = binding.ioField.outputSpinner
 
-        val inputEditText: EditText = binding.ioField.inputEdittext
-        val outputEditText: EditText = binding.ioField.outputEdittext
+        val spinnerListener = SpinnerListener(inputEditText, outputEditText, inputSpinner, outputSpinner)
+        inputSpinner.onItemSelectedListener = spinnerListener
+        outputSpinner.onItemSelectedListener = spinnerListener
 
         inputEditText.showSoftInputOnFocus = false
         outputEditText.showSoftInputOnFocus = false

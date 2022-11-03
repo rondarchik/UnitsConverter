@@ -50,18 +50,13 @@ class IOService(private var context: Context, private var clipboardManager: Clip
         val correctCharacters = "0123456789."
 
         val pointCounter = strToPaste.count { it == '.' }
-        var fractionalFlag = false
-        var fractionalPartCounter = 0
-        val beforePointPart = strToPaste.substringBefore('.')
-        val zeroCounter = beforePointPart.count { it == '0' }
-        val zeroCounterPro = strToPaste.count { it == '0' } + oldStr.count { it == '0' }
 
         if (pointCounter > 1) {
             Toast.makeText(context, R.string.to_much_points_to_paste, Toast.LENGTH_LONG).show()
             return
         }
 
-        if (oldStr.length + strToPaste.length >= 20) {
+        if (oldStr.length + strToPaste.length > 50) {
             Toast.makeText(context, R.string.to_much_to_paste, Toast.LENGTH_LONG).show()
             return
         }
@@ -73,24 +68,6 @@ class IOService(private var context: Context, private var clipboardManager: Clip
             }
         }
 
-        if ((zeroCounter > 1 && pointCounter != 0) || zeroCounterPro > 1) {
-            Toast.makeText(context, R.string.to_much_zeros_to_paste, Toast.LENGTH_LONG).show()
-            return
-        }
-
-        strToPaste.forEach {
-            if (it == '.') {
-                fractionalFlag = true
-            }
-            if (fractionalFlag) {
-                fractionalPartCounter++
-            }
-        }
-
-        if (fractionalPartCounter > 10) {
-            Toast.makeText(context, R.string.to_much_frac_to_paste, Toast.LENGTH_SHORT).show()
-            return
-        }
 
         fieldToPaste.text = leftStrPart + strToPaste + rightStrPart
         Toast.makeText(context, R.string.paste_message, Toast.LENGTH_SHORT).show()

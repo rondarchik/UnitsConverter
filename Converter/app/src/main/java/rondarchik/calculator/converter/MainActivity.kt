@@ -7,10 +7,7 @@ import android.view.ActionMode
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -66,17 +63,14 @@ class MainActivity : AppCompatActivity() {
 
         inputEditText.customSelectionActionModeCallback = object : ActionMode.Callback {
             override fun onCreateActionMode(p0: ActionMode?, p1: Menu?): Boolean {
-                Toast.makeText(applicationContext, "ahahahhahahhah (_!_)", Toast.LENGTH_SHORT).show()
                 return false
             }
 
             override fun onPrepareActionMode(p0: ActionMode?, p1: Menu?): Boolean {
-                Toast.makeText(applicationContext, "ahahahhahahhah (_!_)", Toast.LENGTH_SHORT).show()
                 return false
             }
 
             override fun onActionItemClicked(p0: ActionMode?, p1: MenuItem?): Boolean {
-                Toast.makeText(applicationContext, "ahahahhahahhah (_!_)", Toast.LENGTH_SHORT).show()
                 return false
             }
 
@@ -93,17 +87,17 @@ class MainActivity : AppCompatActivity() {
         val outputSpinner: Spinner = findViewById(R.id.output_spinner)
 
         when (view.id) {
-            R.id.zero_button -> inputService.updateInputText("0", inputEditText, outputEditText)
-            R.id.one_button -> inputService.updateInputText("1", inputEditText, outputEditText)
-            R.id.two_button -> inputService.updateInputText("2", inputEditText, outputEditText)
-            R.id.three_button -> inputService.updateInputText("3", inputEditText, outputEditText)
-            R.id.four_button -> inputService.updateInputText("4", inputEditText, outputEditText)
-            R.id.five_button -> inputService.updateInputText("5", inputEditText, outputEditText)
-            R.id.six_button -> inputService.updateInputText("6", inputEditText, outputEditText)
-            R.id.seven_button -> inputService.updateInputText("7", inputEditText, outputEditText)
-            R.id.eight_button -> inputService.updateInputText("8", inputEditText, outputEditText)
-            R.id.nine_button -> inputService.updateInputText("9", inputEditText, outputEditText)
-            R.id.point_button -> inputService.updateInputText(".", inputEditText, outputEditText)
+            R.id.zero_button -> inputService.updateInputText("0", inputEditText)
+            R.id.one_button -> inputService.updateInputText("1", inputEditText)
+            R.id.two_button -> inputService.updateInputText("2", inputEditText)
+            R.id.three_button -> inputService.updateInputText("3", inputEditText)
+            R.id.four_button -> inputService.updateInputText("4", inputEditText)
+            R.id.five_button -> inputService.updateInputText("5", inputEditText)
+            R.id.six_button -> inputService.updateInputText("6", inputEditText)
+            R.id.seven_button -> inputService.updateInputText("7", inputEditText)
+            R.id.eight_button -> inputService.updateInputText("8", inputEditText)
+            R.id.nine_button -> inputService.updateInputText("9", inputEditText)
+            R.id.point_button -> inputService.updateInputText(".", inputEditText)
             else -> inputEditText.text = inputEditText.text
         }
 
@@ -135,6 +129,7 @@ class MainActivity : AppCompatActivity() {
         val outputEditText: EditText = findViewById(R.id.output_edittext)
         val inputSpinner: Spinner = findViewById(R.id.input_spinner)
         val outputSpinner: Spinner = findViewById(R.id.output_spinner)
+
 
         when (view.id) {
             R.id.input_copy_button ->
@@ -169,4 +164,5 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
+
 }

@@ -19,5 +19,4 @@ class SpinnerListener(private val inputValue: EditText, private val outputValue:
     override fun onNothingSelected(parent: AdapterView<*>?) {
         TODO("Not yet implemented")
     }
-
 }

@@ -5,13 +5,10 @@ import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import rondarchik.calculator.converter.R
 import rondarchik.calculator.converter.databinding.FragmentWeightBinding
 import rondarchik.calculator.converter.services.SpinnerListener
-import rondarchik.calculator.converter.ui.length.LengthViewModel
 
 class WeightFragment : Fragment() {
 
@@ -30,10 +27,7 @@ class WeightFragment : Fragment() {
         _binding = FragmentWeightBinding.inflate(inflater, container, false)
 
         val inputEditText: EditText = binding.ioField.inputEdittext
-        inputEditText.setText("0")
-
         val outputEditText: EditText = binding.ioField.outputEdittext
-        outputEditText.setText("0")
 
         inputEditText.showSoftInputOnFocus = false
         outputEditText.showSoftInputOnFocus = false
@@ -66,13 +60,6 @@ class WeightFragment : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        val weightViewModel = ViewModelProvider(this)[WeightViewModel::class.java]
-
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -81,11 +68,15 @@ class WeightFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val inputEditText: EditText = binding.ioField.inputEdittext
+        val outputEditText: EditText = binding.ioField.outputEdittext
+
         val inputSpinner: Spinner = binding.ioField.inputSpinner
         val outputSpinner: Spinner = binding.ioField.outputSpinner
 
-        val inputEditText: EditText = binding.ioField.inputEdittext
-        val outputEditText: EditText = binding.ioField.outputEdittext
+        val spinnerListener = SpinnerListener(inputEditText, outputEditText, inputSpinner, outputSpinner)
+        inputSpinner.onItemSelectedListener = spinnerListener
+        outputSpinner.onItemSelectedListener = spinnerListener
 
         inputEditText.showSoftInputOnFocus = false
         outputEditText.showSoftInputOnFocus = false

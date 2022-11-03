@@ -5,53 +5,59 @@ import java.math.BigDecimal
 class LengthConverter {
 
     private val metersToKilometers = BigDecimal(1000)
-    private val metersToFeet = BigDecimal(3.2808399)
-    private val metersToMiles = BigDecimal(0.000621371192)
+    private val metersToCentimeters = BigDecimal(100)
+    private val metersToMillimeters = BigDecimal(1000)
 
-    private val kilometersToFeet = BigDecimal(3280.8399)
-    private val kilometersToMiles = BigDecimal(0.621371192)
+    private val kilometersToCentimeters = BigDecimal(100000)
+    private val kilometersToMillimeters = BigDecimal(1000000)
 
-    private val feetToMiles = BigDecimal(5280)
+    private val centimetersToMillimeters = BigDecimal(10)
 
-    fun metersToKilometers(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
-        return if (!isReverseConversion)
-            value.divide(metersToKilometers)
-        else
-            value.multiply(metersToKilometers)
+    fun metersToKilometers(value: BigDecimal) : BigDecimal {
+        return  value.divide(metersToKilometers)
     }
 
-    fun metersToFeet(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
-        return if (!isReverseConversion)
-            value.multiply(metersToFeet)
-        else
-            value.divide(metersToFeet)
+    fun kilometersToMeters(value: BigDecimal) : BigDecimal {
+        return  value.multiply(metersToKilometers)
     }
 
-    fun metersToMiles(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
-        return if (!isReverseConversion)
-            value.multiply(metersToMiles)
-        else
-            value.divide(metersToMiles)
+    fun metersToCentimeters(value: BigDecimal) : BigDecimal {
+        return value.multiply(metersToCentimeters)
     }
 
-    fun kilometersToFeet(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
-        return if (!isReverseConversion)
-            value.multiply(kilometersToFeet)
-        else
-            value.divide(kilometersToFeet)
+    fun centimetersToMeters(value: BigDecimal) : BigDecimal {
+        return value.divide(metersToCentimeters)
     }
 
-    fun kilometersToMiles(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
-        return if (!isReverseConversion)
-            value.multiply(kilometersToMiles)
-        else
-            value.divide(kilometersToMiles)
+    fun metersToMillimeters(value: BigDecimal) : BigDecimal {
+        return value.multiply(metersToMillimeters)
     }
 
-    fun feetToMiles(value: BigDecimal, isReverseConversion: Boolean = false) : BigDecimal {
-        return if (!isReverseConversion)
-            value.divide(feetToMiles)
-        else
-            value.multiply(feetToMiles)
+    fun mmToMeters(value: BigDecimal) : BigDecimal {
+        return value.divide(metersToMillimeters)
+    }
+
+    fun kilometersToCm(value: BigDecimal) : BigDecimal {
+        return value.multiply(kilometersToCentimeters)
+    }
+
+    fun cmToKilometers(value: BigDecimal) : BigDecimal {
+        return value.divide(kilometersToCentimeters)
+    }
+
+    fun kilometersToMm(value: BigDecimal) : BigDecimal {
+        return value.multiply(kilometersToMillimeters)
+    }
+
+    fun mmToKilometers(value: BigDecimal) : BigDecimal {
+        return value.divide(kilometersToMillimeters)
+    }
+
+    fun cmToMM(value: BigDecimal) : BigDecimal {
+        return value.multiply(centimetersToMillimeters)
+    }
+
+    fun mmTOCm(value: BigDecimal) : BigDecimal {
+        return value.divide(centimetersToMillimeters)
     }
 }

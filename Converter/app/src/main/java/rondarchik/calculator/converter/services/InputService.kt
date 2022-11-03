@@ -9,26 +9,20 @@ import rondarchik.calculator.converter.R
 
 class InputService(private var context: Context) : AppCompatActivity() {
 
-    fun updateInputText(strToAdd: String, inputEditText: EditText, outputText: EditText) {
+    fun updateInputText(strToAdd: String, inputEditText: EditText) {
         // cursor
         val oldStr = inputEditText.text.toString()
         val cursorPosition = inputEditText.selectionStart
         val leftStrPart = oldStr.substring(0, cursorPosition)
         val rightStrPart = oldStr.substring(cursorPosition)
         val beforePointPart = oldStr.substringBefore('.')
-        var zeroIsFirst = false
         val newString: String
         // point validate
-        var fractionalPartCounter = 0
-        var fractionalFlag = false
         var pointFlag = false
         // zero validate
         var zeroFlag = true
 
-        if (oldStr[0] == '0')
-            zeroIsFirst = true
-
-        if (oldStr.length >= 16) {
+        if (oldStr.length >= 50) {
             Toast.makeText(context, R.string.to_much_toast, Toast.LENGTH_SHORT).show()
             inputEditText.setText(oldStr)
             inputEditText.setSelection(cursorPosition)
@@ -36,7 +30,7 @@ class InputService(private var context: Context) : AppCompatActivity() {
         }
 
         if (cursorPosition < beforePointPart.length) {
-            if (strToAdd == "0" && zeroIsFirst && cursorPosition == 0) {
+            if (strToAdd == "0" && cursorPosition == 0) {
                 Toast.makeText(context, R.string.zero2, Toast.LENGTH_LONG).show()
                 inputEditText.setText(oldStr)
                 inputEditText.setSelection(cursorPosition)
@@ -51,32 +45,16 @@ class InputService(private var context: Context) : AppCompatActivity() {
             return
         }
 
-        if (outputText.text.toString().length == 16) {
-            Toast.makeText(context, R.string.stop, Toast.LENGTH_LONG).show()
-            inputEditText.setText(oldStr + strToAdd)
-            inputEditText.setSelection(cursorPosition + 1)
-            return
-        }
-
-        oldStr.forEach {
-            if (it == '.') {
-                fractionalFlag = true
-            }
-            if (fractionalFlag)
-                fractionalPartCounter++
-        }
-
-        if (fractionalPartCounter > 10) {
-            Toast.makeText(context, R.string.to_much_frac_toast, Toast.LENGTH_SHORT).show()
-            inputEditText.setText(oldStr)
-            inputEditText.setSelection(cursorPosition)
-            return
-        }
-
         if (strToAdd == "." && oldStr == "0" && cursorPosition == oldStr.length) {
             newString = leftStrPart + strToAdd + rightStrPart
             inputEditText.setText(newString)
             inputEditText.setSelection(cursorPosition + 1)
+            return
+        }
+        else if (strToAdd == "." && cursorPosition == 0) {
+            Toast.makeText(context, R.string.no, Toast.LENGTH_SHORT).show()
+            inputEditText.setText(oldStr)
+            inputEditText.setSelection(cursorPosition)
             return
         }
         else if (strToAdd == "." && oldStr == "0") {
@@ -112,7 +90,7 @@ class InputService(private var context: Context) : AppCompatActivity() {
                 return
             }
         }
-        else if (strToAdd == "." && oldStr.length < 16) {
+        else if (strToAdd == "." && oldStr.length < 49) {
             oldStr.forEach {
                 if (it == '.') {
                     pointFlag = true
@@ -132,15 +110,8 @@ class InputService(private var context: Context) : AppCompatActivity() {
                 return
             }
         }
-        else if (strToAdd == "." && oldStr.length == 15) {
+        else if (strToAdd == "." && oldStr.length == 49) {
             Toast.makeText(context, R.string.point_, Toast.LENGTH_LONG).show()
-            inputEditText.setText(oldStr)
-            inputEditText.setSelection(cursorPosition)
-            return
-        }
-
-        if (oldStr.length == 15 && !pointFlag) {
-            Toast.makeText(context, R.string.max_integer, Toast.LENGTH_LONG).show()
             inputEditText.setText(oldStr)
             inputEditText.setSelection(cursorPosition)
             return
