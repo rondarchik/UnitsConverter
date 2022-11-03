@@ -8,24 +8,37 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import rondarchik.calculator.converter.R
-import kotlin.reflect.typeOf
+import java.math.BigDecimal
 
 class IOService(private var context: Context, private var clipboardManager: ClipboardManager) {
 
     private lateinit var clipData: ClipData
 
     fun switchValues(inputEditText: EditText, outputEditText: EditText,
-                     inputSpinner: Spinner, outputSpinner: Spinner) {
-        val inputStr = inputEditText.text.toString()
-        val outputStr = outputEditText.text.toString()
+                     inputSpinner: Spinner, outputSpinner: Spinner): String {
+        val inputStr = inputEditText.text.toString().toBigDecimal()
+        val outputStr = outputEditText.text.toString().toBigDecimal()
         val inputSpinnerId = inputSpinner.selectedItemId.toInt()
         val outputSpinnerId = outputSpinner.selectedItemId.toInt()
 
-        inputEditText.setText(outputStr)
-        outputEditText.setText(inputStr)
-
         inputSpinner.setSelection(outputSpinnerId, true)
         outputSpinner.setSelection(inputSpinnerId, true)
+
+        return if (isIntegerValue(inputStr)) {
+            inputEditText.setText(outputStr.stripTrailingZeros().toPlainString())
+            val intVal = inputStr.intValueExact()
+            //outputEditText.setText(intVal.toString())
+            // outputEditText.setText(res)
+           intVal.toString()
+        } else {
+            inputEditText.setText(outputStr.stripTrailingZeros().toPlainString())
+            //outputEditText.setText(inputStr.stripTrailingZeros().toPlainString())
+            inputStr.stripTrailingZeros().toPlainString()
+        }
+    }
+
+    private fun isIntegerValue(bd: BigDecimal): Boolean {
+        return bd.stripTrailingZeros().scale() <= 0
     }
 
     fun copyValue(fieldToCopy: TextView) {

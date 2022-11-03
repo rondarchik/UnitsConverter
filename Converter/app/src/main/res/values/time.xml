@@ -4,6 +4,6 @@
         <item>Hours (h)</item>
         <item>Minutes (min)</item>
         <item>Days (d)</item>
-        <item>Seconds (sec)</item>
+        <item>Weeks (wk)</item>
     </string-array>
 </resources>

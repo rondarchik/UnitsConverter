@@ -148,7 +148,8 @@ class MainActivity : AppCompatActivity() {
                 }
             R.id.exchange_button ->
                 switchButton.setOnClickListener {
-                    ioService.switchValues(inputEditText, outputEditText, inputSpinner, outputSpinner)
+                    val str = ioService.switchValues(inputEditText, outputEditText, inputSpinner, outputSpinner)
+                    inputEditText.setText(str)
                 }
         }
     }

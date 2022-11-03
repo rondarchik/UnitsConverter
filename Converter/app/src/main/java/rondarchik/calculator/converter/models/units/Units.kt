@@ -8,7 +8,7 @@ enum class Units(val nameOfUnit: String) {
     H("Hours (h)"),
     MIN("Minutes (min)"),
     D("Days (d)"),
-    SEC("Seconds (sec)"),
+    WK("Weeks (wk)"),
     KG("Kilograms (kg)"),
     T("Tones (t)"),
     Q("Quintals (q)"),

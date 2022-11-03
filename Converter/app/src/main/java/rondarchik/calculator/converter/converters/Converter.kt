@@ -23,7 +23,7 @@ class Converter {
         when (fromUnit) {
             Units.M, Units.KM, Units.CM, Units.MM -> lengthConvert(inputValue, outputValue, fromUnit, toUnit)
             Units.KG, Units.T, Units.Q, Units.G -> weightConvert(inputValue, outputValue, fromUnit, toUnit)
-            Units.H, Units.SEC, Units.D, Units.MIN -> timeConvert(inputValue, outputValue, fromUnit, toUnit)
+            Units.H, Units.WK, Units.D, Units.MIN -> timeConvert(inputValue, outputValue, fromUnit, toUnit)
         }
     }
 
@@ -173,7 +173,7 @@ class Converter {
                         .stripTrailingZeros().toPlainString())
                     Units.D -> outputValue.setText(timeConverter.hoursToDays(input)
                         .stripTrailingZeros().toPlainString())
-                    Units.SEC -> outputValue.setText(timeConverter.hoursToSeconds(input)
+                    Units.WK -> outputValue.setText(timeConverter.hoursToWeeks(input)
                         .stripTrailingZeros().toPlainString())
                     else -> outputValue.setText(input.stripTrailingZeros().toPlainString())
                 }
@@ -186,7 +186,7 @@ class Converter {
                     Units.MIN -> outputValue.setText(input.stripTrailingZeros().toPlainString())
                     Units.D -> outputValue.setText(timeConverter.minutesToDays(input)
                         .stripTrailingZeros().toPlainString())
-                    Units.SEC -> outputValue.setText(timeConverter.minutesToSeconds(input)
+                    Units.WK -> outputValue.setText(timeConverter.minutesToWeeks(input)
                         .stripTrailingZeros().toPlainString())
                     else -> outputValue.setText(input.stripTrailingZeros().toPlainString())
 
@@ -200,21 +200,21 @@ class Converter {
                     Units.MIN -> outputValue.setText(timeConverter.daysToMin(input)
                         .stripTrailingZeros().toPlainString())
                     Units.D -> outputValue.setText(input.stripTrailingZeros().toPlainString())
-                    Units.SEC -> outputValue.setText(timeConverter.daysToSeconds(input)
+                    Units.WK -> outputValue.setText(timeConverter.daysToWeeks(input)
                         .stripTrailingZeros().toPlainString())
                     else -> outputValue.setText(input.stripTrailingZeros().toPlainString())
                 }
                 return
             }
-            Units.SEC -> {
+            Units.WK -> {
                 when (toUnit) {
-                    Units.H -> outputValue.setText(timeConverter.secondsToHours(input)
+                    Units.H -> outputValue.setText(timeConverter.weeksToHours(input)
                         .stripTrailingZeros().toPlainString())
-                    Units.MIN -> outputValue.setText(timeConverter.secondsToMin(input)
+                    Units.MIN -> outputValue.setText(timeConverter.weeksToMin(input)
                         .stripTrailingZeros().toPlainString())
-                    Units.D -> outputValue.setText(timeConverter.secondsToDays(input)
+                    Units.D -> outputValue.setText(timeConverter.weeksToDays(input)
                         .stripTrailingZeros().toPlainString())
-                    Units.SEC -> outputValue.setText(input.stripTrailingZeros().toPlainString())
+                    Units.WK -> outputValue.setText(input.stripTrailingZeros().toPlainString())
                     else -> outputValue.setText(input.stripTrailingZeros().toPlainString())
                 }
                 return
