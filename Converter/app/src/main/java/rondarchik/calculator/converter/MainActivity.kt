@@ -1,6 +1,7 @@
 package rondarchik.calculator.converter
 
 
+import android.annotation.SuppressLint
 import android.content.ClipboardManager
 import android.os.Bundle
 import android.view.ActionMode
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var ioService: IOService
     private val converter = Converter()
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -41,6 +43,8 @@ class MainActivity : AppCompatActivity() {
 
         val inputEditText: EditText = findViewById(R.id.input_edittext)
         val outputEditText: EditText = findViewById(R.id. output_edittext)
+        val cursor: TextView = findViewById(R.id.cursorPositionText)
+        cursor.text = "Cursor position: ${inputEditText.selectionStart} / ${inputEditText.length()}"
 
         inputEditText.showSoftInputOnFocus = false
         outputEditText.showSoftInputOnFocus = false
@@ -57,20 +61,25 @@ class MainActivity : AppCompatActivity() {
 
         val inputEditText: EditText = findViewById(R.id.input_edittext)
         val outputEditText: EditText = findViewById(R.id. output_edittext)
+        val cursor: TextView = findViewById(R.id.cursorPositionText)
+        cursor.text = "Cursor position: ${inputEditText.selectionStart} / ${inputEditText.length()}"
 
         inputEditText.showSoftInputOnFocus = false
         outputEditText.showSoftInputOnFocus = false
 
         inputEditText.customSelectionActionModeCallback = object : ActionMode.Callback {
             override fun onCreateActionMode(p0: ActionMode?, p1: Menu?): Boolean {
+                Toast.makeText(applicationContext, R.string.no_select, Toast.LENGTH_SHORT).show()
                 return false
             }
 
             override fun onPrepareActionMode(p0: ActionMode?, p1: Menu?): Boolean {
+                Toast.makeText(applicationContext, R.string.no_select, Toast.LENGTH_SHORT).show()
                 return false
             }
 
             override fun onActionItemClicked(p0: ActionMode?, p1: MenuItem?): Boolean {
+                Toast.makeText(applicationContext, R.string.no_select, Toast.LENGTH_SHORT).show()
                 return false
             }
 
@@ -102,6 +111,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         converter.convert(inputEditText, outputEditText, inputSpinner, outputSpinner)
+        val cursor: TextView = findViewById(R.id.cursorPositionText)
+        cursor.text = "Cursor position: ${inputEditText.selectionStart} / ${inputEditText.length()}"
     }
 
     fun onKeyboardOtherButtonClick(view: View) {
@@ -111,13 +122,18 @@ class MainActivity : AppCompatActivity() {
         val outputSpinner: Spinner = findViewById(R.id.output_spinner)
 
         when (view.id) {
-            R.id.empty -> Toast.makeText(applicationContext, R.string.empty, Toast.LENGTH_SHORT).show()
+            R.id.empty -> {
+                Toast.makeText(applicationContext, R.string.empty, Toast.LENGTH_SHORT).show()
+            }
             R.id.clear_button -> inputService.clearAll(inputEditText, outputEditText)
             R.id.delete_button -> {
                 inputService.deleteSymbol(inputEditText, outputEditText)
                 converter.convert(inputEditText, outputEditText, inputSpinner, outputSpinner)
             }
         }
+
+        val cursor: TextView = findViewById(R.id.cursorPositionText)
+        cursor.text = "Cursor position: ${inputEditText.selectionStart} / ${inputEditText.length()}"
     }
 
     fun onIOButtonClick (view: View) {
@@ -130,8 +146,27 @@ class MainActivity : AppCompatActivity() {
         val inputSpinner: Spinner = findViewById(R.id.input_spinner)
         val outputSpinner: Spinner = findViewById(R.id.output_spinner)
 
+        val cursor: TextView = findViewById(R.id.cursorPositionText)
 
         when (view.id) {
+            R.id.cursorBackButton -> {
+                val cursorPos = inputEditText.selectionStart
+                if (cursorPos == 0) {
+                    Toast.makeText(this.applicationContext, R.string.back, Toast.LENGTH_SHORT).show()
+                    return
+                }
+                inputEditText.setSelection(cursorPos - 1)
+                cursor.text = "Cursor position: ${cursorPos - 1} / ${inputEditText.length()}"
+            }
+            R.id.cursorForwardButton -> {
+                val cursorPos = inputEditText.selectionStart
+                if (cursorPos == inputEditText.length()) {
+                    Toast.makeText(this.applicationContext, R.string.forward, Toast.LENGTH_SHORT).show()
+                    return
+                }
+                inputEditText.setSelection(cursorPos + 1)
+                cursor.text = "Cursor position: ${cursorPos + 1} / ${inputEditText.length()}"
+            }
             R.id.input_copy_button ->
                 inputCopyButton.setOnClickListener {
                     ioService.copyValue(inputEditText)
@@ -143,14 +178,20 @@ class MainActivity : AppCompatActivity() {
             R.id.input_paste_button ->
                 inputPasteButton.setOnClickListener {
                     ioService.pasteValue(inputEditText)
-                    inputEditText.setSelection(inputEditText.text.toString().length)
                     converter.convert(inputEditText, outputEditText, inputSpinner, outputSpinner)
                 }
-            R.id.exchange_button ->
+            R.id.exchange_button -> {
                 switchButton.setOnClickListener {
-                    val str = ioService.switchValues(inputEditText, outputEditText, inputSpinner, outputSpinner)
-                    inputEditText.setText(str)
+                    val length = ioService.switchValues(
+                        inputEditText,
+                        outputEditText,
+                        inputSpinner,
+                        outputSpinner
+                    )
+
+                    cursor.text = "Cursor position: ${inputEditText.selectionStart} / ${length}"
                 }
+            }
         }
     }
 
@@ -158,10 +199,22 @@ class MainActivity : AppCompatActivity() {
         val output: EditText = findViewById(R.id.output_edittext)
 
         output.setOnClickListener {
-            Toast.makeText(this.applicationContext, R.string.edittext, Toast.LENGTH_LONG).show()
+            Toast.makeText(this.applicationContext, R.string.edittext, Toast.LENGTH_SHORT).show()
         }
         output.setOnLongClickListener {
-            Toast.makeText(this.applicationContext, R.string.paste_edittext, Toast.LENGTH_LONG).show()
+            Toast.makeText(this.applicationContext, R.string.paste_edittext, Toast.LENGTH_SHORT).show()
+            true
+        }
+    }
+
+    fun onInputClick(view: View) {
+        val input: EditText = findViewById(R.id.input_edittext)
+
+        input.setOnClickListener {
+            Toast.makeText(this.applicationContext, R.string.input_edittext, Toast.LENGTH_SHORT).show()
+        }
+        input.setOnLongClickListener {
+            Toast.makeText(this.applicationContext, R.string.input_paste_edittext, Toast.LENGTH_SHORT).show()
             true
         }
     }

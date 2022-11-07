@@ -30,6 +30,9 @@ class Converter {
     private fun lengthConvert (inputValue: EditText, outputValue: EditText,
                                fromUnit: Units, toUnit: Units) {
 
+        if (inputValue.length() == 0)
+            return
+
         val input = inputValue.text.toString().toBigDecimal()
 
         val lengthConverter = LengthConverter()
@@ -93,6 +96,9 @@ class Converter {
 
     private fun weightConvert (inputValue: EditText, outputValue: EditText,
                                fromUnit: Units, toUnit: Units) {
+
+        if (inputValue.length() == 0)
+            return
 
         val input = inputValue.text.toString().toBigDecimal()
 
@@ -160,6 +166,9 @@ class Converter {
 
     private fun timeConvert (inputValue: EditText, outputValue: EditText,
                              fromUnit: Units, toUnit: Units) {
+
+        if (inputValue.length() == 0)
+            return
 
         val input = inputValue.text.toString().toBigDecimal()
 

@@ -217,7 +217,6 @@
                 android:textColor="@color/black"
                 android:textSize="40sp"
                 app:backgroundTint="@color/white" />
-
             <Button
                 android:id="@+id/zero_button"
                 style="@style/Widget.AppCompat.Button.Borderless"

@@ -39,13 +39,15 @@
 
     <!--Toasts for Vadim-->
     <!--MainActivity-->
+    <string name="back">Позиция курсора уже 0!!! \n Куда дальше ты его хочешь сместить?!</string>
+    <string name="forward">Позиция курсора - конец строки!!! \n Куда дальше ты его хочешь сместить?!</string>
     <string name="empty">Тут ничего нет.. Хватить кликать!</string>
-    <!--CategoryActivity-->
     <string name="stop">СТОИТ ОСТАНОВИТЬСЯ!!! \n Значение может быть обрезано</string>
     <string name="nothing">Вообще-то нечего удалять :)</string>
     <string name="point_">МАХ - 50, сейчас 49 \n НУ И КУДА ВСРАЛАСЬ ТЕБЕ ЭТА ТОЧКА!!!</string>
     <string name="point2">Ну и зачем тебе 2-я точка?! \n НЕ НАДА ТАК!!!</string>
     <string name="zero2">Какое-то шаманство с нулями -_-</string>
+    <string name="no_select">Я не запрещаю тебе выделять!!!</string>
     <string name="no">НЕ НАДА ТАК.. \n Ну поставь точку по человечески!</string>
     <string name="to_much_toast">Переборщил чутка :)\n MAX: 50</string>
     <string name="to_much_to_paste">Слишком много.. \n Измени значение и попробуй снова :)</string>
@@ -54,4 +56,6 @@
     <string name="no_digits_to_paste">Ты уверен, что это число? \n Измени значение и попробуй снова :)</string>
     <string name="edittext">Это всего лишь поле для вывода результатов.. \n Оно НЕИЗМЕНЯЕМО, не пытайся его изменить :3</string>
     <string name="paste_edittext">Это всего лишь поле для вывода результатов.. \n Оно НЕИЗМЕНЯЕМО, не пытайся сюда что-то вставить :3</string>
+    <string name="input_edittext">Если хочешь изменить позицию курсора, то используй спкциальные кнопки \n \"Назад\" и \"Вперед\" (они ниже)</string>
+    <string name="input_paste_edittext">Если хочешь вставить текст, то используй специальную кнопку (она правее)</string>
 </resources>

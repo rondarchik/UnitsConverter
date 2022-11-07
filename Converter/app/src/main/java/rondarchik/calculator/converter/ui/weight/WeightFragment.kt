@@ -5,6 +5,7 @@ import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import rondarchik.calculator.converter.R
 import rondarchik.calculator.converter.databinding.FragmentWeightBinding
@@ -34,14 +35,17 @@ class WeightFragment : Fragment() {
 
         inputEditText.customSelectionActionModeCallback = object : ActionMode.Callback {
             override fun onCreateActionMode(p0: ActionMode?, p1: Menu?): Boolean {
+                Toast.makeText(context, R.string.no_select, Toast.LENGTH_SHORT).show()
                 return false
             }
 
             override fun onPrepareActionMode(p0: ActionMode?, p1: Menu?): Boolean {
+                Toast.makeText(context, R.string.no_select, Toast.LENGTH_SHORT).show()
                 return false
             }
 
             override fun onActionItemClicked(p0: ActionMode?, p1: MenuItem?): Boolean {
+                Toast.makeText(context, R.string.no_select, Toast.LENGTH_SHORT).show()
                 return false
             }
 

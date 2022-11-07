@@ -38,22 +38,39 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp">
 
-            <EditText
-                android:id="@+id/input_edittext"
-                android:layout_width="330dp"
-                android:layout_height="62dp"
-                android:layout_marginStart="15dp"
-                android:layout_weight="0"
-                android:cursorVisible="true"
-                android:ems="10"
-                android:importantForAutofill="no"
-                android:longClickable="false"
-                android:inputType="numberDecimal"
-                android:windowSoftInputMode="stateHidden"
-                android:text="0"
-                style="@style/Custom"
-                app:layout_constraintHorizontal_bias="1.0"
-                tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <EditText
+                    android:id="@+id/input_edittext"
+                    style="@style/Custom"
+                    android:layout_width="330dp"
+                    android:layout_height="62dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_weight="0"
+                    android:cursorVisible="false"
+                    android:ems="10"
+                    android:onClick="onInputClick"
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:longClickable="false"
+                    android:focusable="false"
+
+                    android:windowSoftInputMode="stateHidden"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+
+                <TextView
+                    android:id="@+id/cursorPositionText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="Cursor position: "
+                    android:textAlignment="textEnd" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -89,19 +106,59 @@
 
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/exchange_button"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/exchange_button"
-        android:onClick="onIOButtonClick"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toTopOf="@id/output_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_layout"
-        app:srcCompat="@drawable/ic_exchange_button"
-        tools:ignore="ImageContrastCheck,TouchTargetSizeCheck" />
+        app:layout_constraintTop_toBottomOf="@id/input_layout">
+
+        <ImageButton
+            android:id="@+id/cursorBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="Cursor back"
+            android:onClick="onIOButtonClick"
+            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/exchange_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:id="@+id/exchange_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/exchange_button"
+            android:onClick="onIOButtonClick"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_exchange_button"
+            tools:ignore="ImageContrastCheck,MissingConstraints,TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:id="@+id/cursorForwardButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Cursor forward"
+            android:onClick="onIOButtonClick"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/exchange_button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_arrow_forward_24"
+            tools:ignore="TouchTargetSizeCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/output_layout"
@@ -137,7 +194,6 @@
 
             <EditText
                 android:id="@+id/output_edittext"
-                android:text="@string/zero"
                 android:focusable="false"
                 android:cursorVisible="false"
                 android:layout_width="330dp"
@@ -176,6 +232,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
