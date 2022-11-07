@@ -50,7 +50,7 @@ class IOService(private var context: Context, private var clipboardManager: Clip
         Toast.makeText(context, R.string.copy_message, Toast.LENGTH_SHORT).show()
     }
 
-    fun pasteValue(fieldToPaste: TextView) {
+    fun pasteValue(fieldToPaste: TextView): Int {
         val data = clipboardManager.primaryClip as ClipData
         val item: ClipData.Item = data.getItemAt(0)
 
@@ -70,27 +70,23 @@ class IOService(private var context: Context, private var clipboardManager: Clip
 
         if (pointCounter > 1) {
             Toast.makeText(context, R.string.to_much_points_to_paste, Toast.LENGTH_SHORT).show()
-            return
+            return 0
         }
 
         if (pointCounter2 > 1) {
             Toast.makeText(context, R.string.to_much_points_to_paste, Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        if (oldStr.length + strToPaste.length > 50) {
-            Toast.makeText(context, R.string.to_much_to_paste, Toast.LENGTH_SHORT).show()
-            return
+            return 0
         }
 
         for (i in strToPaste) {
             if (i !in correctCharacters) {
                 Toast.makeText(context, R.string.no_digits_to_paste, Toast.LENGTH_SHORT).show()
-                return
+                return 0
             }
         }
 
         fieldToPaste.text = String.format("%s%s%s", leftStrPart, strToPaste, rightStrPart)
         Toast.makeText(context, R.string.paste_message, Toast.LENGTH_SHORT).show()
+        return cursorPosition + strToPaste.length
     }
 }

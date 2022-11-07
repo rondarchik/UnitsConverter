@@ -177,8 +177,11 @@ class MainActivity : AppCompatActivity() {
                 }
             R.id.input_paste_button ->
                 inputPasteButton.setOnClickListener {
-                    ioService.pasteValue(inputEditText)
+                    val length = ioService.pasteValue(inputEditText)
                     converter.convert(inputEditText, outputEditText, inputSpinner, outputSpinner)
+
+                    inputEditText.setSelection(length)
+                    cursor.text = "Cursor position: $length / ${inputEditText.length()}"
                 }
             R.id.exchange_button -> {
                 switchButton.setOnClickListener {
@@ -189,7 +192,8 @@ class MainActivity : AppCompatActivity() {
                         outputSpinner
                     )
 
-                    cursor.text = "Cursor position: ${inputEditText.selectionStart} / ${length}"
+                    inputEditText.setSelection(inputEditText.length())
+                    cursor.text = "Cursor position: ${inputEditText.selectionStart} / $length"
                 }
             }
         }
