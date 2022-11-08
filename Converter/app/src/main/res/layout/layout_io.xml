@@ -57,7 +57,6 @@
                     android:inputType="numberDecimal"
                     android:longClickable="false"
                     android:focusable="false"
-
                     android:windowSoftInputMode="stateHidden"
                     app:layout_constraintHorizontal_bias="1.0"
                     tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />

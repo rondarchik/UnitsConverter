@@ -1,7 +1,6 @@
 package rondarchik.calculator.converter
 
 
-import android.annotation.SuppressLint
 import android.content.ClipboardManager
 import android.os.Bundle
 import android.view.ActionMode
@@ -28,7 +27,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var ioService: IOService
     private val converter = Converter()
 
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
