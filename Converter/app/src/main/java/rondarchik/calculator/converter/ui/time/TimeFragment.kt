@@ -2,10 +2,7 @@ package rondarchik.calculator.converter.ui.time
 
 import android.os.Bundle
 import android.view.*
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import rondarchik.calculator.converter.R
 import rondarchik.calculator.converter.databinding.FragmentTimeBinding
@@ -29,6 +26,8 @@ class TimeFragment : Fragment() {
 
         val inputEditText: EditText = binding.ioField.inputEdittext
         val outputEditText: EditText = binding.ioField.outputEdittext
+        val cursor: TextView = binding.ioField.cursorPositionText
+        cursor.text = "Cursor position: ${inputEditText.selectionStart} / ${inputEditText.length()}"
 
         inputEditText.showSoftInputOnFocus = false
         outputEditText.showSoftInputOnFocus = false
@@ -74,6 +73,8 @@ class TimeFragment : Fragment() {
 
         val inputEditText: EditText = binding.ioField.inputEdittext
         val outputEditText: EditText = binding.ioField.outputEdittext
+        val cursor: TextView = binding.ioField.cursorPositionText
+        cursor.text = "Cursor position: ${inputEditText.selectionStart} / ${inputEditText.length()}"
 
         val inputSpinner: Spinner = binding.ioField.inputSpinner
         val outputSpinner: Spinner = binding.ioField.outputSpinner
