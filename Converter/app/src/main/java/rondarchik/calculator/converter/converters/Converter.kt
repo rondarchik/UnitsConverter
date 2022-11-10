@@ -23,7 +23,7 @@ class Converter {
         when (fromUnit) {
             Units.M, Units.KM, Units.CM, Units.MM -> lengthConvert(inputValue, outputValue, fromUnit, toUnit)
             Units.KG, Units.T, Units.Q, Units.G -> weightConvert(inputValue, outputValue, fromUnit, toUnit)
-            Units.H, Units.WK, Units.D, Units.MIN -> timeConvert(inputValue, outputValue, fromUnit, toUnit)
+            Units.ML, Units.CM3, Units.L, Units.M3 -> volumeConvert(inputValue, outputValue, fromUnit, toUnit)
         }
     }
 
@@ -164,67 +164,69 @@ class Converter {
         }
     }
 
-    private fun timeConvert (inputValue: EditText, outputValue: EditText,
-                             fromUnit: Units, toUnit: Units) {
+    private fun volumeConvert (inputValue: EditText, outputValue: EditText,
+                               fromUnit: Units, toUnit: Units) {
 
         if (inputValue.length() == 0)
             return
 
         val input = inputValue.text.toString().toBigDecimal()
 
-        val timeConverter = TimeConverter()
+        val volumeConverter = VolumeConverter()
 
         when (fromUnit) {
-            Units.H -> {
+            Units.ML -> {
                 when (toUnit) {
-                    Units.H -> outputValue.setText(input.stripTrailingZeros().toPlainString())
-                    Units.MIN -> outputValue.setText(timeConverter.hoursToMinutes(input)
+                    Units.ML -> outputValue.setText(input.stripTrailingZeros().toPlainString())
+                    Units.CM3 -> outputValue.setText(volumeConverter.mlToCm3(input)
                         .stripTrailingZeros().toPlainString())
-                    Units.D -> outputValue.setText(timeConverter.hoursToDays(input)
+                    Units.L -> outputValue.setText(volumeConverter.mlToL(input)
                         .stripTrailingZeros().toPlainString())
-                    Units.WK -> outputValue.setText(timeConverter.hoursToWeeks(input)
+                    Units.M3 -> outputValue.setText(volumeConverter.mlToM3(input)
                         .stripTrailingZeros().toPlainString())
                     else -> outputValue.setText(input.stripTrailingZeros().toPlainString())
                 }
                 return
             }
-            Units.MIN -> {
+            Units.CM3 -> {
                 when (toUnit) {
-                    Units.H -> outputValue.setText(timeConverter.minToHours(input)
+                    Units.ML -> outputValue.setText(volumeConverter.cm3ToMl(input)
                         .stripTrailingZeros().toPlainString())
-                    Units.MIN -> outputValue.setText(input.stripTrailingZeros().toPlainString())
-                    Units.D -> outputValue.setText(timeConverter.minutesToDays(input)
+                    Units.CM3 -> outputValue.setText(input.stripTrailingZeros().toPlainString())
+                    Units.L -> outputValue.setText(volumeConverter.cm3ToL(input)
                         .stripTrailingZeros().toPlainString())
-                    Units.WK -> outputValue.setText(timeConverter.minutesToWeeks(input)
+                    Units.M3 -> outputValue.setText(volumeConverter.cm3ToM3(input)
                         .stripTrailingZeros().toPlainString())
                     else -> outputValue.setText(input.stripTrailingZeros().toPlainString())
 
                 }
                 return
             }
-            Units.D -> {
+            Units.L -> {
                 when (toUnit) {
-                    Units.H -> outputValue.setText(timeConverter.daysToHours(input)
+                    Units.ML -> outputValue.setText(volumeConverter.lToMl(input)
                         .stripTrailingZeros().toPlainString())
-                    Units.MIN -> outputValue.setText(timeConverter.daysToMin(input)
+                    Units.CM3 -> outputValue.setText(volumeConverter.lToCm3(input)
                         .stripTrailingZeros().toPlainString())
-                    Units.D -> outputValue.setText(input.stripTrailingZeros().toPlainString())
-                    Units.WK -> outputValue.setText(timeConverter.daysToWeeks(input)
+                    Units.L -> outputValue.setText(input.stripTrailingZeros().toPlainString())
+                    Units.M3 -> outputValue.setText(volumeConverter.lToM3(input)
                         .stripTrailingZeros().toPlainString())
                     else -> outputValue.setText(input.stripTrailingZeros().toPlainString())
+
                 }
                 return
             }
-            Units.WK -> {
+            Units.M3 -> {
                 when (toUnit) {
-                    Units.H -> outputValue.setText(timeConverter.weeksToHours(input)
+                    Units.ML -> outputValue.setText(volumeConverter.m3ToMl(input)
                         .stripTrailingZeros().toPlainString())
-                    Units.MIN -> outputValue.setText(timeConverter.weeksToMin(input)
+                    Units.CM3 -> outputValue.setText(volumeConverter.m3ToCm3(input)
                         .stripTrailingZeros().toPlainString())
-                    Units.D -> outputValue.setText(timeConverter.weeksToDays(input)
+                    Units.L -> outputValue.setText(volumeConverter.m3ToL(input)
                         .stripTrailingZeros().toPlainString())
-                    Units.WK -> outputValue.setText(input.stripTrailingZeros().toPlainString())
+                    Units.M3 -> outputValue.setText(input.stripTrailingZeros().toPlainString())
                     else -> outputValue.setText(input.stripTrailingZeros().toPlainString())
+
                 }
                 return
             }

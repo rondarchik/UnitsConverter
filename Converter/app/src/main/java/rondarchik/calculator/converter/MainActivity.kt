@@ -1,6 +1,5 @@
 package rondarchik.calculator.converter
 
-
 import android.content.ClipboardManager
 import android.os.Bundle
 import android.view.ActionMode
@@ -189,7 +188,6 @@ class MainActivity : AppCompatActivity() {
                         inputSpinner,
                         outputSpinner
                     )
-
                     inputEditText.setSelection(inputEditText.length())
                     cursor.text = "Cursor position: ${inputEditText.selectionStart} / $length"
                 }

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Converter</string>
-    <string name="title_time">Time</string>
+    <string name="title_volume">Volume</string>
     <string name="title_length">Length</string>
     <string name="title_weight">Weight</string>
 
@@ -20,7 +20,7 @@
     <string name="category_image">Image for unit</string>
     <string name="length_image">Image for length</string>
     <string name="weight_image">Image for weight</string>
-    <string name="currency_image">Image for currency</string>
+    <string name="volume_image">Image for volume</string>
     <string name="back_button">Back button</string>
     <string name="next_button">Forward button</string>
     <string name="one">1</string>

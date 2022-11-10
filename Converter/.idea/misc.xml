@@ -5,25 +5,32 @@
       <map>
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable-v24/bordered_circle_spinner.xml" value="0.1" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable-v24/ic_copy_button.xml" value="0.1" />
+        <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable-v24/ic_currency.xml" value="0.2555" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable-v24/ic_exchange_button.xml" value="0.1955" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable-v24/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable-v24/ic_paste_button.xml" value="0.1955" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable-v24/zero_px.xml" value="0.1" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1625" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.1625" />
+        <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable/ic_cube_icon_173215.xml" value="0.2555" />
+        <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable/ic_currency_black_24dp.xml" value="0.2555" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.1" />
+        <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable/ic_time_black_24dp.xml" value="0.2555" />
+        <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/drawable/ic_volume_black_24dp.xml" value="0.2555" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/font/lato.xml" value="0.1" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout-land/activity_main.xml" value="0.21075837742504408" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout-land/fragment_length.xml" value="0.21075837742504408" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout-land/layout_io.xml" value="0.4" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout-land/layout_keyboard.xml" value="0.21075837742504408" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/fragment_currency.xml" value="0.25" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/fragment_length.xml" value="0.25" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/fragment_notifications.xml" value="0.25" />
+        <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/fragment_speed.xml" value="0.25" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/fragment_time.xml" value="0.25" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/fragment_weight.xml" value="0.25" />
         <entry key="..\:/MobileApp_Android_Kotlin/Converter/app/src/main/res/layout/layout_io.xml" value="0.1" />

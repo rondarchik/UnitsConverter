@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="time_list">
-        <item>Hours (h)</item>
-        <item>Minutes (min)</item>
-        <item>Days (d)</item>
-        <item>Weeks (wk)</item>
-    </string-array>
-</resources>
